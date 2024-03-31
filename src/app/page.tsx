@@ -1,9 +1,9 @@
 import { Home } from "@/components/hero";
 
-
-// TODO: REFACTOR, REMOVE TAILWIND UI AND USE A DIFFERENT UI LIBRARY
 export default function Page() {
   return (
-    <Home />
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <Home />
+    </main>
   )
 }
