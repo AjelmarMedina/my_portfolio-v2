@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { zillaSlab } from "./(ui)/fonts";
 
 export default function Hero() {
   return (
@@ -9,25 +10,25 @@ export default function Hero() {
       {/* Content */}
       <div className="flex flex-col space-y-8 justify-center items-center w-fit">
         {/* Heading */}
-        <div className="w-[28rem] text-7xl">
+        <div className={cn("w-[28rem] text-7xl", zillaSlab.className, "font-bold italic leading-[5.625rem]")}>
           {/* Wrappers */}
           <div className="flex flex-row w-full">
-            <div className="flex flex-row justify-center px-8">
+            <div className="flex flex-row justify-center px-8 bg-neutral-white text-neutral-black">
               Ajelmar
             </div>
           </div>
           <div className="flex flex-row-reverse w-full">
-            <div className="flex flex-row justify-center px-8">
+            <div className="flex flex-row justify-center px-8 bg-neutral-950">
               Medina
             </div>
           </div>
         </div>
 
         <div className="w-min space-y-4">
-          <h1 className="w-max text-4xl">
+          <h1 className="w-max text-4xl font-medium text-neutral-light">
             Front-end Web Developer & Designer
           </h1>
-          <h2 className="w-full px-8 text-[1.25rem]">
+          <h2 className="w-full px-8 text-[1.25rem] text-neutral-300">
             I am a Student who spends his free time learning to code and design websites from the ground up to deployment!
           </h2>
         </div>
