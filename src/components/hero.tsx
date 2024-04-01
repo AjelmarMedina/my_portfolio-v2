@@ -9,8 +9,9 @@ export default function Hero() {
     >
       {/* Content */}
       <div className="flex flex-col space-y-8 justify-center items-center w-fit">
+
         {/* Heading */}
-        <div className={cn("w-[28rem] text-7xl", zillaSlab.className, "font-bold italic leading-[5.625rem]")}>
+        <div className={cn("w-[28rem]", zillaSlab.className, "prose-display-2xl font-bold italic ")}>
           {/* Wrappers */}
           <div className="flex flex-row w-full">
             <div className="flex flex-row justify-center px-8 bg-neutral-white text-neutral-black">
@@ -18,7 +19,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex flex-row-reverse w-full">
-            <div className="flex flex-row justify-center px-8 bg-neutral-950">
+            <div className="flex flex-row justify-center px-8 bg-neutral-950 ">
               Medina
             </div>
           </div>

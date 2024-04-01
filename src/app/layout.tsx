@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     default: "Who's Ajelmar Medina?",
   },
   description: "Ajel Medina is a Front-end— Back-end freelancing developer and designer",
+  generator: 'Next.js',
+  applicationName: 'Next.js',
+  referrer: 'origin-when-cross-origin',
   authors: {
     name: "Ajelmar Medina",
     url: "https://github.com/AjelmarMedina"
@@ -20,23 +23,18 @@ export const metadata: Metadata = {
   creator: "Ajelmar Medina",
   keywords: ["ajel", "ajelmar", "ajelmar medina", "medina", "web developer", "front end", "back end", "web design"],
   robots: "index, follow",
-  manifest: "./manifest.json",
+  manifest: "https://ajelmarmedina.vercel.app/manifest.json",
   openGraph: {
     type: "website",
     url: "https://ajelmarmedina.vercel.app",
     title: "Ajelmar Medina",
     description: "Ajelmar Medina's Portfolio website showcasing his Web Development career",
     siteName: "Ajelmar Medina Portfolio",
-    images: [{
-      url: "/Heading.png",
-    }],
   },
   twitter: {
     card: "summary_large_image",
     site: "@site",
     creator: "@creator",
-    "images": "/Heading.png"
-
   },
 };
 
