@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-import { zillaSlab } from "./(ui)/fonts";
+import { Button } from "./ui/button";
+import { zillaSlab } from "./ui/fonts";
 
 export default function Hero() {
   return (
@@ -15,12 +16,11 @@ export default function Hero() {
           width={512}
           height={512}
           className="h-full object-cover"
+          priority
         />
       </div>
       {/* Content */}
       <div className="flex flex-col space-y-8 justify-center items-center w-fit">
-
-        {/* Heading */}
         <div className={cn("w-[28rem] prose-display-2xl font-bold italic", zillaSlab.className)}>
           {/* Wrappers */}
           <div className="flex flex-row w-full">
@@ -34,7 +34,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
         <div className="w-min space-y-4">
           <h1 className="w-max text-4xl font-medium text-neutral-light">
             Front-end Web Developer & Designer
@@ -42,6 +41,15 @@ export default function Hero() {
           <h2 className="w-full px-8 text-[1.25rem] text-neutral-300">
             I am a Student who spends his free time learning to code and design websites from the ground up to deployment!
           </h2>
+        </div>
+        {/* Buttons */}
+        <div className="flex flex-row  w-min space-x-4 ">
+          <Button size={"lg"}>
+            Get in touch!
+          </Button>
+          <Button variant={"outline"} size={"lg"}>
+            About me...
+          </Button>
         </div>
       </div>
       <div className="hero--radial-gradient__right w-full h-full bg-neutral-50">
@@ -51,6 +59,7 @@ export default function Hero() {
           width={512}
           height={512}
           className="h-full object-cover"
+          priority
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { inter } from "@/components/(ui)/fonts";
+import { inter } from "@/components/ui/fonts";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
