@@ -45,6 +45,44 @@ const config: Config = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-radial-md" : "radial-gradient(circle at 0 0, #001833 30%, #004799 100%)",
       },
+      typography: {
+        'display-2xl': {
+          css: {
+            'font-size': '72px',
+            'line-height': '90px'
+          }
+        },
+        'display-xl': {
+          css: {
+            'font-size': '60px',
+            'line-height': '72px'
+          }
+        },
+        'display-lg': {
+          css: {
+            'font-size': '48px',
+            'line-height': '60px'
+          }
+        },
+        'display-md': {
+          css: {
+            'font-size': '36px',
+            'line-height': '44px'
+          }
+        },
+        'display-sm': {
+          css: {
+            'font-size': '30px',
+            'line-height': '38px'
+          }
+        },
+        'display-xs': {
+          css: {
+            'font-size': '24px',
+            'line-height': '32px'
+          }
+        },
+      }
     },
   },
   plugins: [
