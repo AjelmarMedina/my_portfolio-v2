@@ -1,0 +1,12 @@
+{
+  "name": "AjelmarMedina",
+  "short_name": "AjelmarMedina",
+  "description": "Ajelmar Medina's Portfolio website showcasing his Web Development career",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
