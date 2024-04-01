@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="flex flex-col space-y-8 justify-center items-center w-fit">
 
         {/* Heading */}
-        <div className={cn("w-[28rem]", zillaSlab.className, "prose-display-2xl font-bold italic ")}>
+        <div className={cn("w-[28rem] prose-display-2xl font-bold italic", zillaSlab.className)}>
           {/* Wrappers */}
           <div className="flex flex-row w-full">
             <div className="flex flex-row justify-center px-8 bg-neutral-white text-neutral-black">
