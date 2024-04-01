@@ -82,12 +82,43 @@ const config: Config = {
             'line-height': '32px'
           }
         },
+        'text-xl': {
+          css: {
+            'font-size': '20px',
+            'line-height': '30px'
+          }
+        },
+        'text-lg': {
+          css: {
+            'font-size': '18px',
+            'line-height': '28px'
+          }
+        },
+        'text-md': {
+          css: {
+            'font-size': '16px',
+            'line-height': '24px'
+          }
+        },
+        'text-sm': {
+          css: {
+            'font-size': '14px',
+            'line-height': '20px'
+          }
+        },
+        'text-xs': {
+          css: {
+            'font-size': '12px',
+            'line-height': '18px'
+          }
+        },
       }
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 };
 export default config;

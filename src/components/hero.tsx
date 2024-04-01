@@ -1,12 +1,22 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+
 import { zillaSlab } from "./(ui)/fonts";
 
 export default function Hero() {
   return (
     <div
-      className="flex flex-row justify-center items-center min-w-full min-h-[100vh] bg-hero-radial-md"
+      className="flex flex-row justify-between items-center min-w-full h-[100vh] bg-hero-radial-md"
     >
+      <div className="hero--radial-gradient__left w-full h-full bg-neutral-50 ">
+        <Image
+          src={"/hero-section/left1.jpg"}
+          alt={"Image"}
+          width={512}
+          height={512}
+          className="h-full object-cover"
+        />
+      </div>
       {/* Content */}
       <div className="flex flex-col space-y-8 justify-center items-center w-fit">
 
@@ -33,6 +43,15 @@ export default function Hero() {
             I am a Student who spends his free time learning to code and design websites from the ground up to deployment!
           </h2>
         </div>
+      </div>
+      <div className="hero--radial-gradient__right w-full h-full bg-neutral-50">
+        <Image
+          src={"/hero-section/right1.jpg"}
+          alt={"Image"}
+          width={512}
+          height={512}
+          className="h-full object-cover"
+        />
       </div>
     </div>
   )
