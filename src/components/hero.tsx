@@ -51,7 +51,6 @@ export default function Hero() {
           <Button variant={"outline"} outline={"accent"} size={"lg"}>
             About me...
           </Button>
-          <input />
         </div>
       </div>
       <div className="hero--radial-gradient__right w-full h-full bg-neutral-50">
