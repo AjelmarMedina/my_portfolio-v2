@@ -5,9 +5,11 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 // TODO: modify destructive states
+// TODO: modify stroke styles
+// TODO: modify ghost states
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center whitespace-nowrap w-max h-min spacing-x-1 rounded-md text-5 leading-[18px] font-bold ring-offset-white transition-colors",  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2",
+    "inline-flex items-center justify-center whitespace-nowrap w-max h-min rounded-md text-5 leading-[18px] font-bold ring-offset-white transition-colors",  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300"
   ],
@@ -28,7 +30,7 @@ const buttonVariants = cva(
         accent: [
           "bg-accent-accent text-neutral-black",
           "hover:bg-accent-400",
-          " transition-transform hover:-translate-y-1",
+          "transition-transform hover:-translate-y-1",
         ],
         destructive: "bg-error-500 text-neutral-white",
       },
@@ -41,7 +43,7 @@ const buttonVariants = cva(
         accent: [
           "border-accent-accent text-accent-accent",
           "hover:border-accent-400 hover:text-accent-400",
-          " transition-transform hover:-translate-y-1",
+          "transition-transform hover:-translate-y-1",
         ],
         destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
@@ -111,3 +113,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+
