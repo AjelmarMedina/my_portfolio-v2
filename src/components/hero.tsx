@@ -1,16 +1,27 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { zillaSlab } from "./(ui)/fonts";
+
+import { ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
+import { zillaSlab } from "./ui/fonts";
 
 export default function Hero() {
   return (
     <div
-      className="flex flex-row justify-center items-center min-w-full min-h-[100vh] bg-hero-radial-md"
+      className="flex flex-row justify-between items-center min-w-full h-[100vh] bg-hero-radial-md"
     >
+      <div className="hero--radial-gradient__left w-full h-full bg-neutral-50 ">
+        <Image
+          src={"/hero-section/left1.jpg"}
+          alt={"Image"}
+          width={512}
+          height={512}
+          className="h-full object-cover"
+          priority
+        />
+      </div>
       {/* Content */}
       <div className="flex flex-col space-y-8 justify-center items-center w-fit">
-
-        {/* Heading */}
         <div className={cn("w-[28rem] prose-display-2xl font-bold italic", zillaSlab.className)}>
           {/* Wrappers */}
           <div className="flex flex-row w-full">
@@ -19,12 +30,11 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex flex-row-reverse w-full">
-            <div className="flex flex-row justify-center px-8 bg-neutral-950 ">
+            <div className="flex flex-row justify-center px-8 bg-neutral-950 text-neutral-white ">
               Medina
             </div>
           </div>
         </div>
-
         <div className="w-min space-y-4">
           <h1 className="w-max text-4xl font-medium text-neutral-light">
             Front-end Web Developer & Designer
@@ -33,6 +43,26 @@ export default function Hero() {
             I am a Student who spends his free time learning to code and design websites from the ground up to deployment!
           </h2>
         </div>
+        {/* Buttons */}
+        <div className="flex flex-row  w-min space-x-4 ">
+          <Button fill={"accent"} size={"lg"}>
+            Get in touch! <ArrowRight />
+          </Button>
+          <Button variant={"outline"} outline={"accent"} size={"lg"}>
+            About me...
+          </Button>
+          <input />
+        </div>
+      </div>
+      <div className="hero--radial-gradient__right w-full h-full bg-neutral-50">
+        <Image
+          src={"/hero-section/right1.jpg"}
+          alt={"Image"}
+          width={512}
+          height={512}
+          className="h-full object-cover"
+          priority
+        />
       </div>
     </div>
   )
