@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { Button } from "./ui/button";
 import { zillaSlab } from "./ui/fonts";
 
@@ -45,11 +46,15 @@ export default function Hero() {
         </div>
         {/* Buttons */}
         <div className="flex flex-row  w-min space-x-4 ">
-          <Button fill={"accent"} size={"lg"}>
-            Get in touch! <ArrowRight />
+          <Button fill={"accent"} size={"lg"} asChild>
+            <Link href={"https://www.linkedin.com/in/ajelmar-medina/"} target="_blank">
+              Get in touch! <ArrowRight className="ml-2" />
+            </Link>
           </Button>
-          <Button variant={"outline"} outline={"accent"} size={"lg"}>
-            About me...
+          <Button variant={"outline"} outline={"accent"} size={"lg"} asChild>
+            <Link href={"https://github.com/AjelmarMedina"} target="_blank">
+              About me...
+            </Link>
           </Button>
         </div>
       </div>
