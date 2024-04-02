@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { zillaSlab } from "./ui/fonts";
 
@@ -44,12 +45,13 @@ export default function Hero() {
         </div>
         {/* Buttons */}
         <div className="flex flex-row  w-min space-x-4 ">
-          <Button fill="accent" size={"lg"}>
-            Get in touch!
+          <Button fill={"accent"} size={"lg"}>
+            Get in touch! <ArrowRight />
           </Button>
-          <Button variant={"outline"} fill={"accent"} size={"lg"}>
+          <Button variant={"outline"} outline={"accent"} size={"lg"}>
             About me...
           </Button>
+          <input />
         </div>
       </div>
       <div className="hero--radial-gradient__right w-full h-full bg-neutral-50">

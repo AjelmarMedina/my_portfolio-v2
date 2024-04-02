@@ -4,9 +4,10 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+// TODO: modify destructive states
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center whitespace-nowrap spacing-x-1 rounded-md text-sm font-medium ring-offset-white transition-colors",  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2",
+    "inline-flex items-center justify-center whitespace-nowrap w-max h-min spacing-x-1 rounded-md text-5 leading-[18px] font-bold ring-offset-white transition-colors",  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300"
   ],
@@ -14,56 +15,66 @@ const buttonVariants = cva(
     variants: {
       variant: {
         fill: "border-transparent",
-        outline:
-          "border-2 border-neutral-200 bg-white hover:bg-neutral-100 hover:text-neutral-900",
-        secondary:
-          "bg-neutral-100 text-neutral-900 hover:bg-neutral-100/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80",
-        ghost: " hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
-        link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
+        outline: "border-2 bg-transparent",
+        ghost: "border-transparent bg-transparent",
+        link: "border-transparent bg-transparent underline-offset-4 hover:underline",
       },
       fill: {
-        dark: "bg-neutral-black text-neutral-white",
-        accent: "bg-accent-300",
-        destructive: "bg-red-500 text-neutral-50"
+        dark: [
+          "bg-neutral-black text-neutral-white",
+          "hover:bg-neutral-700",
+          "transition-transform hover:-translate-y-1",
+        ],
+        accent: [
+          "bg-accent-accent text-neutral-black",
+          "hover:bg-accent-400",
+          " transition-transform hover:-translate-y-1",
+        ],
+        destructive: "bg-error-500 text-neutral-white",
       },
       outline: {
-        dark: "bg-neutral-black text-neutral-white",
-        accent: "bg-accent-300",
+        dark: [
+          "border-neutral-black text-neutral-black hover:border-neutral-700 hover:text-neutral-700",
+          "hover:border-neutral-700 hover:text-neutral-700",
+          "transition-transform hover:-translate-y-1",
+        ],
+        accent: [
+          "border-accent-accent text-accent-accent",
+          "hover:border-accent-400 hover:text-accent-400",
+          " transition-transform hover:-translate-y-1",
+        ],
         destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
-      text: {
+      stroke: {
         dark: "bg-neutral-black text-neutral-white",
         accent: "bg-accent-300",
         destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
       size: {
-        sm: "h-9 rounded-md px-3",
-        md: "h-10 px-4 py-2",
-        lg: "h-11 rounded-md px-8",
+        sm: "px-3 p-2",
+        md: "px-5 py-3",
+        lg: "px-6 py-4",
       },
-      sizeIcon: {
-        sm: "h-9 rounded-md px-3",
-        md: "h-10 px-4 py-2",
-        lg: "h-11 rounded-md px-8",
-      }
     },
     compoundVariants: [
       {
         variant: "fill",
         fill: ["accent", "dark", "destructive"],
+        size: ["sm", "md", "lg"],
       },
       {
         variant: "outline",
-        outline: ["accent", "dark", "destructive"]
+        outline: ["accent", "dark", "destructive"],
+        size: ["sm", "md", "lg"],
       },
       {
         variant: ["ghost", "link"],
-        text: ["accent", "dark", "destructive"],
+        stroke: ["accent", "dark", "destructive"],
+        size: ["sm", "md", "lg"],
       },
     ],
     defaultVariants: {
       variant: "fill",
-      fill: "dark",
       size: "md",
     },
   }
@@ -86,11 +97,11 @@ export interface ButtonProps
  * @param asChild Link as child
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, fill: colorFill, outline: colorOutline, text: colorText, size, sizeIcon, asChild = false, ...props }, ref) => {
+  ({ className, variant, fill, outline, stroke, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
-        className={cn(buttonVariants({ variant, fill: colorFill, outline: colorOutline, text: colorText, size, sizeIcon, className }))}
+        className={cn(buttonVariants({ variant, fill, outline, stroke, size, className }))}
         ref={ref}
         {...props}
       />
