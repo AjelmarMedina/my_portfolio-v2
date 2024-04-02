@@ -29,7 +29,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex flex-row-reverse w-full">
-            <div className="flex flex-row justify-center px-8 bg-neutral-950 ">
+            <div className="flex flex-row justify-center px-8 bg-neutral-950 text-neutral-white ">
               Medina
             </div>
           </div>
@@ -44,10 +44,10 @@ export default function Hero() {
         </div>
         {/* Buttons */}
         <div className="flex flex-row  w-min space-x-4 ">
-          <Button size={"lg"}>
+          <Button fill="accent" size={"lg"}>
             Get in touch!
           </Button>
-          <Button variant={"outline"} size={"lg"}>
+          <Button variant={"outline"} fill={"accent"} size={"lg"}>
             About me...
           </Button>
         </div>
