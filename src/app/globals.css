@@ -38,6 +38,9 @@ body {
   .hero--radial-gradient__right {
     mask-image: radial-gradient(ellipse 100% 100% at right center, #000 50%, transparent 100%);;
   };
+  .hero--radial-gradient__bottom {
+    mask-image: radial-gradient(ellipse 100% 100% at bottom center, #000 50%, transparent 100%);;
+  };
 }
 
 

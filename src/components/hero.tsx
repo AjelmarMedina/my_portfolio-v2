@@ -9,62 +9,26 @@ import { zillaSlab } from "./ui/fonts";
 export default function Hero() {
   return (
     <div
-      className="flex flex-row justify-between items-center min-w-full h-[100vh] bg-hero-radial-md"
+      className="flex flex-col justify-between items-center min-w-full h-[100vh] bg-hero-radial-md md:flex-row"
     >
-      <div className="hero--radial-gradient__left w-full h-full bg-neutral-50 ">
+      <div className="hidden w-full h-full hero--radial-gradient__left bg-neutral-50 md:block">
         <Image
           src={"/hero-section/left1.jpg"}
           alt={"Image"}
           width={512}
           height={512}
-          className="h-full object-cover"
+          className="object-cover h-full"
           priority
         />
       </div>
-      {/* Content */}
-      <div className="flex flex-col space-y-8 justify-center items-center w-fit">
-        <div className={cn("w-[28rem] prose-display-2xl font-bold italic", zillaSlab.className)}>
-          {/* Wrappers */}
-          <div className="flex flex-row w-full">
-            <div className="flex flex-row justify-center px-8 bg-neutral-white text-neutral-black">
-              Ajelmar
-            </div>
-          </div>
-          <div className="flex flex-row-reverse w-full">
-            <div className="flex flex-row justify-center px-8 bg-neutral-950 text-neutral-white ">
-              Medina
-            </div>
-          </div>
-        </div>
-        <div className="w-min space-y-4">
-          <h1 className="w-max text-4xl font-medium text-neutral-light">
-            Front-end Web Developer & Designer
-          </h1>
-          <h2 className="w-full px-8 text-[1.25rem] text-neutral-300">
-            I am a Student who spends his free time learning to code and design websites from the ground up to deployment!
-          </h2>
-        </div>
-        {/* Buttons */}
-        <div className="flex flex-row  w-min space-x-4 ">
-          <Button fill={"accent"} size={"lg"} asChild>
-            <Link href={"https://www.linkedin.com/in/ajelmar-medina/"} target="_blank">
-              Get in touch! <ArrowRight className="ml-2" />
-            </Link>
-          </Button>
-          <Button variant={"outline"} outline={"accent"} size={"lg"} asChild>
-            <Link href={"https://github.com/AjelmarMedina"} target="_blank">
-              About me...
-            </Link>
-          </Button>
-        </div>
-      </div>
-      <div className="hero--radial-gradient__right w-full h-full bg-neutral-50">
+      <Content />
+      <div className="w-full h-full overflow-hidden hero--radial-gradient__bottom bg-neutral-50 md:hero--radial-gradient__right">
         <Image
           src={"/hero-section/right1.jpg"}
           alt={"Image"}
           width={512}
           height={512}
-          className="h-full object-cover"
+          className="object-cover w-full md:h-full"
           priority
         />
       </div>
@@ -72,17 +36,62 @@ export default function Hero() {
   )
 }
 
+function Content() {
+  return (
+    <div className="flex flex-col space-y-8 justify-center items-center w-fit#">
+      {/* Heading */}
+      <div className={cn("max-w-[375px] w-full prose-display-lg font-bold itali px-4 md:px-0 md:max-w-[28rem] md:prose-display-2xl", zillaSlab.className)}>
+        <div className="flex flex-row w-full">
+          <div className="flex flex-row justify-center px-8 bg-neutral-white text-neutral-black">
+            Ajelmar
+          </div>
+        </div>
+        <div className="flex flex-row-reverse w-full">
+          <div className="flex flex-row justify-center px-8 bg-neutral-950 text-neutral-white ">
+            Medina
+          </div>
+        </div>
+      </div>
+      {/* Subtitle */}
+      <div className="w-full px-4 space-y-4 sm:px-0">
+        <h1 className="font-medium w-fit prose-display-xs text-neutral-light md:w-max md:prose-display-md">
+          Front-end Web Developer & Designer
+        </h1>
+        <h2 className="w-full prose-text-xs text-neutral-300 md:px-8 md:prose-text-xl">
+          I am a Student who spends his free time learning to code and design websites from the ground up to deployment!
+        </h2>
+      </div>
+      {/* Buttons */}
+      <div className="flex flex-row px-0 space-x-4 w-min px-4sm:">
+        <Button fill={"accent"} size={"lg"} asChild>
+          <Link href={"https://www.linkedin.com/in/ajelmar-medina/"} target="_blank">
+            Get in touch! <ArrowRight className="ml-2" />
+          </Link>
+        </Button>
+        <Button variant={"outline"} outline={"accent"} size={"lg"} asChild>
+          <Link href={"https://github.com/AjelmarMedina"} target="_blank">
+            About me...
+          </Link>
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+/**
+ * @returns the Next.js default Landing page on initial codegen
+ */
 export function NextHome() {
   return (
     <>
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+      <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
+        <p className="fixed top-0 left-0 flex justify-center w-full pt-8 pb-6 border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Ajel Medina is Getting Starde on: &nbsp;
           <code className="font-mono font-bold">src/app/page.tsx</code>
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+        <div className="fixed bottom-0 left-0 flex items-end justify-center w-full h-48 bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+            className="flex gap-2 p-8 pointer-events-none place-items-center lg:pointer-events-auto lg:p-0"
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -118,10 +127,10 @@ export function NextHome() {
         />
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
+      <div className="grid mb-32 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -138,7 +147,7 @@ export function NextHome() {
 
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -155,7 +164,7 @@ export function NextHome() {
 
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -172,7 +181,7 @@ export function NextHome() {
 
         <a
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
