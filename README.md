@@ -1,3 +1,5 @@
+### Welcome to Ajelmar Medina's Portfolio website repository. This website showcases the various qualities, skills and projects I am able to offer.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
