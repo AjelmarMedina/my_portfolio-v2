@@ -1,5 +1,7 @@
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
@@ -114,3 +116,22 @@ Button.displayName = "Button"
 
 export { Button, buttonVariants }
 
+/**
+ * A simple button set with a accent primary and a dark secondary with default text
+ */
+export function ButtonSet() {
+  return (
+    <div className="flex flex-row px-0 space-x-4 w-min px-4sm:">
+      <Button fill={"accent"} size={"lg"} asChild>
+        <Link href={"https://www.linkedin.com/in/ajelmar-medina/"} target="_blank">
+          Get in touch! <ArrowRight className="ml-2" />
+        </Link>
+      </Button>
+      <Button variant={"outline"} outline={"dark"} size={"lg"} asChild>
+        <Link href={"https://github.com/AjelmarMedina"} target="_blank">
+          About me...
+        </Link>
+      </Button>
+    </div>
+  )
+}

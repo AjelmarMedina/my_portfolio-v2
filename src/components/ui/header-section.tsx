@@ -9,13 +9,13 @@ export function Header(
 ) {
   return (
     <div
-      className="flex flex-row items-center justify-center min-w-full px-4 h-fit py-14 bg-neutral-white text-neutral-black md:px-28 md:py-24"
+      className="flex flex-row items-center justify-center min-w-full px-4 py-14 h-fit bg-neutral-white text-neutral-black md:px-28 md:py-24"
     >
-      <div className="space-y-8">
-        <h1 className="bold prose-display-lg md:prose-display-xl">
+      <div className="max-w-[672px] space-y-8">
+        <h1 className="font-bold text-center prose-display-lg md:prose-display-xl">
           {header}
         </h1>
-        <p className="prose-text-md md:prose-text-xl">
+        <p className="text-center prose-text-md md:prose-text-xl">
           {paragraph}
         </p>
       </div>

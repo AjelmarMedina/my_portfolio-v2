@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -9,21 +9,21 @@ import { zillaSlab } from "./ui/fonts";
 export default function Hero() {
   return (
     <div
-      className="flex flex-col justify-between items-center min-w-full h-[100vh] bg-hero-radial-md md:flex-row"
+      className="flex flex-col justify-between items-center w-full h-[100vh] bg-hero-radial-md text-center drop-shadow-2xl md:flex-row"
     >
-      <div className="hidden w-full h-full hero--radial-gradient__left bg-neutral-50 md:block">
+      <div className="hidden w-full h-full hero--radial-gradient__left bg-neutral-50 select-none md:block">
         <Image
           src={"/hero-section/left1.jpg"}
           alt={"Image"}
           width={512}
           height={512}
-          className="object-cover h-full"
+          className="object-cover w-full h-full"
           draggable="false"
           priority
         />
       </div>
       <Content />
-      <div className="w-full overflow-hidden h-fit hero--radial-gradient__bottom bg-neutral-50 md:h-full md:hero--radial-gradient__right">
+      <div className="w-full overflow-hidden h-fit hero--radial-gradient__bottom bg-neutral-50 select-none md:h-full md:hero--radial-gradient__right">
         <Image
           src={"/hero-section/right1.jpg"}
           alt={"Image"}
@@ -34,13 +34,14 @@ export default function Hero() {
           priority
         />
       </div>
+      <ChevronDown className="absolute bottom-4 w-8 h-8 text-neutral-light/60 animate-bounce md:hidden" />
     </div>
   )
 }
 
 function Content() {
   return (
-    <div className="flex flex-col space-y-8 justify-center items-center w-fit#">
+    <div className="flex flex-col h-auto space-y-8 justify-center items-center w-fit pt-20 md:h-full">
       {/* Heading */}
       <div className={cn("max-w-[375px] w-full prose-display-lg font-bold itali px-4 md:px-0 md:max-w-[28rem] md:prose-display-2xl", zillaSlab.className)}>
         <div className="flex flex-row w-full">
@@ -55,8 +56,8 @@ function Content() {
         </div>
       </div>
       {/* Subtitle */}
-      <div className="w-full px-4 space-y-4 sm:px-0">
-        <h1 className="font-medium w-fit prose-display-xs text-neutral-light md:w-max md:prose-display-md">
+      <div className="w-full px-4 space-y-4 sm:px-0 text-center">
+        <h1 className="font-medium w-full prose-display-xs text-neutral-light md:w-max md:prose-display-md">
           Front-end Web Developer & Designer
         </h1>
         <h2 className="w-full prose-text-xs text-neutral-300 md:px-8 md:prose-text-xl">
@@ -76,6 +77,7 @@ function Content() {
           </Link>
         </Button>
       </div>
+      <ChevronDown className="hidden absolute bottom-8 w-16 h-16 text-neutral-light/60 animate-bounce md:block" />
     </div>
   )
 }
