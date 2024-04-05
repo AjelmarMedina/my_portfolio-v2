@@ -1,6 +1,6 @@
 import Hero from "@/components/hero";
 import { Header } from "@/components/ui/header-section";
-import { Experiences, Skillsets } from '../../components/subsections';
+import { Certifications, Experiences, Skillsets } from '../../components/subsections';
 
 export default function Page() {
   return (
@@ -15,6 +15,7 @@ export default function Page() {
         />
         <Skillsets />
         <Experiences />
+        <Certifications />
       </div>
     </main>
   )
