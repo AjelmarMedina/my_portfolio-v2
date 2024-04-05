@@ -1,6 +1,6 @@
 import Hero from "@/components/hero";
 import { Header } from "@/components/ui/header-section";
-import { Skillsets } from '../../components/subsections';
+import { Experiences, Skillsets } from '../../components/subsections';
 
 export default function Page() {
   return (
@@ -14,6 +14,7 @@ export default function Page() {
           paragraph="Body Extra Large. Most fonts have a particular weight which corresponds to one of the numbers in Common weight name mapping. However some fonts, called variable fonts, can support a range of weights with a more or less"
         />
         <Skillsets />
+        <Experiences />
       </div>
     </main>
   )

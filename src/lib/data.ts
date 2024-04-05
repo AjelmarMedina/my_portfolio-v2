@@ -64,3 +64,30 @@ export const skills = [
     description: "Body Extra Large. Most fonts have a particular weight which corresponds to one of the numbers in Common weight name mapping. However some fonts, called variable fonts, can support a range of weights with a more or less fine granularity, and this can gi"
   },
 ]
+
+export const experiences = [
+  {
+    title: "AppCon 2023",
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio odio eaque labore et illo aliquid possimus quidem officia veniam commodi. Explicabo perspiciatis nemo sunt ducimus, et dolore perferendis odit aut asperiores ut?",
+  },
+  {
+    title: "Self Study",
+    description: "Vestibulum nec libero vel nulla finibus venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent dui.",
+  },
+  {
+    title: "Farmacia Landrito",
+    description: "Sit cillum nostrud do exercitation cupidatat. Et exercitation amet fugiat ad deserunt nisi Lorem quis nulla. Dolore laborum do minim mollit.",
+  },
+  {
+    title: "Academe & Education",
+    description: "Consectetur nulla magna ullamco adipisicing magna aute enim et enim fugiat non dolor. Eiusmod non eiusmod voluptate pariatur eu aliqua et fugiat qui qui enim id. Et ullamco aliqua occaecat id.",
+  },
+  {
+    title: "HomeSchool Essentials",
+    description: "Qui id ex laboris irure exercitation aliquip esse eiusmod adipisicing ad ut officia. Sint enim veniam magna nulla nostrud esse sint cillum. Veniam id Lorem consequat mollit adipisicing amet qui sint Lorem.",
+  },
+  {
+    title: "Leadership Roles",
+    description: "Cupidatat officia exercitation elit aliquip consequat deserunt reprehenderit velit dolore velit elit dolore mollit ad. Nisi consequat anim duis deserunt nulla Lorem est laborum anim. Id magna dolore anim elit ad culpa excepteur.",
+  },
+]
