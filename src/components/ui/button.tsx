@@ -7,7 +7,6 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 // TODO: modify destructive states
-// TODO: modify stroke styles
 // TODO: modify ghost states
 const buttonVariants = cva(
   [
@@ -50,9 +49,9 @@ const buttonVariants = cva(
         destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
       stroke: {
-        dark: "bg-neutral-black text-neutral-white",
-        accent: "bg-accent-300",
-        destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
+        dark: "text-neutral-black",
+        accent: "text-accent-300",
+        destructive: "text-error-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
       size: {
         sm: "px-3 p-2",

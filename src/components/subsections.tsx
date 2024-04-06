@@ -4,11 +4,9 @@ import { certifications, experiences, skills } from "@/lib/data"
 import { cn } from "@/lib/utils"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import { useState } from "react"
-import { ButtonSet } from './ui/button'
+import { Button, ButtonSet } from './ui/button'
 
 // TODO: Customized border
-// TODO: Heading Spacing fix 
-// TODO: Accessibility of items
 
 export function Skillsets() {
   const [selected, setSelected] = useState(0)
@@ -18,27 +16,42 @@ export function Skillsets() {
       className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:flex-row md:space-x-[72px] md:px-28 md:py-24"
     >
       <div
-        className="flex flex-col items-center w-fit space-y-10 lg:items-start"
+        className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
-        <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
-          Skillset
-        </h1>
-        <div className="flex flex-row justify-around items-center min-w-full lg:justify-start">
-          <ChevronLeftIcon 
-            className="min-w-8 min-h-8 lg:hidden hover:cursor-pointer transition-transform hover:-translate-x-1"
-            onClick={() => {
-              setSelected(selected > 0 ? selected - 1 : skills.length -1)
-            }}
-          />
-          <span className="w-fit prose-display-sm text-center md:prose-display-md">
-            {skills[selected].title}
-          </span>
-          <ChevronRightIcon
-            className="min-w-8 min-h-8 lg:hidden hover:cursor-pointer transition-transform hover:translate-x-1"
-            onClick={() => {
-              setSelected(selected < skills.length -1 ? selected + 1 : 0)
-            }}
-          />
+        <div className="w-full">
+          <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
+            Skillset
+          </h1>
+          <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
+            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+              <Button 
+                stroke="dark" 
+                className="transition-transform hover:cursor-pointer hover:-translate-x-1"
+              
+              >
+                <ChevronLeftIcon 
+                  className="min-w-8 min-h-8"
+                  onClick={() => {
+                    setSelected(selected > 0 ? selected - 1 : skills.length -1)
+                  }}
+                />
+              </Button>
+            </div>
+            <span className="text-center w-fit prose-display-sm md:prose-display-md">
+              {skills[selected].title}
+            </span>
+            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+              <Button
+                stroke="dark"
+                className="transition-transform hover:cursor-pointer hover:translate-x-1"
+                onClick={() => {
+                  setSelected(selected < skills.length -1 ? selected + 1 : 0)
+                }}
+              > 
+                <ChevronRightIcon className="min-w-8 min-h-8"/>
+              </Button>
+            </div>
+          </div>
         </div>
         <p className="prose-text-md md:prose-text-xl">
           {skills[selected].description}
@@ -46,7 +59,7 @@ export function Skillsets() {
         <ButtonSet />
       </div>
       <div
-        className="w-fit hidden lg:grid md:grid-cols-4 md:grid-rows-4 md:gap-4"
+        className="hidden w-fit lg:grid md:grid-cols-4 md:grid-rows-4 md:gap-4"
       >
         {skills.map((skill, index) => (
           <div 
@@ -77,27 +90,41 @@ export function Experiences() {
       className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-primary-100 text-neutral-black lg:flex-row-reverse md:space-x-[72px] md:space-x-reverse md:px-28 md:py-24"
     >
       <div
-        className="flex flex-col items-center w-fit space-y-10 lg:items-start"
+        className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
-        <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
-          Experiences
-        </h1>
-        <div className="flex flex-row justify-around items-center min-w-full lg:justify-start">
-          <ChevronLeftIcon 
-            className="min-w-8 min-h-8 lg:hidden hover:cursor-pointer transition-transform hover:-translate-x-1"
-            onClick={() => {
-              setSelected(selected > 0 ? selected - 1 : experiences.length -1)
-            }}
-          />
-          <span className="w-fit prose-display-sm text-center md:prose-display-md">
-            {experiences[selected].title}
-          </span>
-          <ChevronRightIcon
-            className="min-w-8 min-h-8 lg:hidden hover:cursor-pointer transition-transform hover:translate-x-1"
-            onClick={() => {
-              setSelected(selected < experiences.length -1 ? selected + 1 : 0)
-            }}
-          />
+        <div className="w-full">
+          <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
+            Experiences
+          </h1>
+          <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
+            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+              <Button
+stroke="dark"
+className="transition-transform hover:cursor-pointer hover:-translate-x-1"
+>
+                <ChevronLeftIcon 
+                  className="min-w-8 min-h-8"
+                  onClick={() => {
+                    setSelected(selected > 0 ? selected - 1 : experiences.length -1)
+                  }}
+                />
+              </Button>
+            </div>
+            <span className="text-center w-fit prose-display-sm md:prose-display-md">
+              {experiences[selected].title}
+            </span>
+            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+              <Button
+                stroke="dark"
+                className="transition-transform hover:cursor-pointer hover:translate-x-1"
+                onClick={() => {
+                  setSelected(selected < experiences.length -1 ? selected + 1 : 0)
+                }}
+              >
+                <ChevronRightIcon className="min-w-8 min-h-8"/>
+              </Button>
+            </div>
+          </div>
         </div>
         <p className="prose-text-md md:prose-text-xl">
           {experiences[selected].description}
@@ -136,27 +163,39 @@ export function Certifications() {
       className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:flex-row md:space-x-[72px] md:px-28 md:py-24"
     >
       <div
-        className="flex flex-col items-center w-fit space-y-10 lg:items-start"
+        className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
-        <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
-          Awards & Certifications
-        </h1>
-        <div className="flex flex-row justify-around items-center min-w-full lg:justify-start">
-          <ChevronLeftIcon 
-            className="min-w-8 min-h-8 lg:hidden hover:cursor-pointer transition-transform hover:-translate-x-1"
-            onClick={() => {
-              setSelected(selected > 0 ? selected - 1 : certifications.length -1)
-            }}
-          />
-          <span className="w-fit prose-display-sm text-center md:prose-display-md">
-            {certifications[selected].title}
-          </span>
-          <ChevronRightIcon
-            className="min-w-8 min-h-8 lg:hidden hover:cursor-pointer transition-transform hover:translate-x-1"
-            onClick={() => {
-              setSelected(selected < certifications.length -1 ? selected + 1 : 0)
-            }}
-          />
+        <div className="w-full">
+          <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
+            Awards & Certifications
+          </h1>
+          <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
+            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+              <Button
+                stroke="dark"
+                className="transition-transform hover:cursor-pointer hover:-translate-x-1"
+                onClick={() => {
+                  setSelected(selected > 0 ? selected - 1 : certifications.length -1)
+                }}
+              >
+                <ChevronLeftIcon className="min-w-8 min-h-8"/>
+              </Button>
+            </div>
+            <span className="text-center w-fit prose-display-sm md:prose-display-md">
+              {certifications[selected].title}
+            </span>
+            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+              <Button
+                stroke="dark"
+                className="transition-transform hover:cursor-pointer hover:translate-x-1"
+                onClick={() => {
+                  setSelected(selected < certifications.length -1 ? selected + 1 : 0)
+                }}
+              >
+                <ChevronRightIcon className="min-w-8 min-h-8"/>
+              </Button>
+            </div>
+          </div>
         </div>
         <p className="prose-text-md md:prose-text-xl">
           {certifications[selected].description}
