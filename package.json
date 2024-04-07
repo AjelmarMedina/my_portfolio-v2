@@ -10,8 +10,7 @@
     "seed": "node -r dotenv/config ./scripts/seed.js",
     "generate": "npx prisma generate",
     "push": "npx prisma db push",
-    "prisma": "npx prisma studio",
-    "postinstall": "prisma generate"
+    "prisma": "npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",
