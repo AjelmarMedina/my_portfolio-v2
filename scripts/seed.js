@@ -1,27 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-import { unstable_noStore as noStore } from "next/cache";
+const { PrismaClient } = require("@prisma/client");
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient;
 
-export async function fetchSkills() {
-  noStore();
-  const data = await prisma.skills.findMany();
-  return data;
-}
-
-export async function fetchExperiences() {
-  noStore();
-  const data = await prisma.experiences.findMany();
-  return data;
-}
-
-export async function fetchCertifications() {
-  noStore();
-  const data = await prisma.certifications.findMany();
-  return data;
-}
-
-export const skills = [
+const skills = [
   {
     title: "Design System",
     description: "Body Extra Large. Most fonts have a particular weight which corresponds to one of the numbers in Common weight name mapping. However some fonts, called variable fonts, can support a range of weights with a more or less fine granularity, and this can gi"
@@ -88,7 +69,7 @@ export const skills = [
   },
 ]
 
-export const experiences = [
+const experiences = [
   {
     title: "AppCon 2023",
     description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio odio eaque labore et illo aliquid possimus quidem officia veniam commodi. Explicabo perspiciatis nemo sunt ducimus, et dolore perferendis odit aut asperiores ut?",
@@ -115,7 +96,7 @@ export const experiences = [
   },
 ]
 
-export const certifications = [
+const certifications = [
   {
     title: "AppCon 2023",
     description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio odio eaque labore et illo aliquid possimus quidem officia veniam commodi. Explicabo perspiciatis nemo sunt ducimus, et dolore perferendis odit aut asperiores ut?",
@@ -133,3 +114,26 @@ export const certifications = [
     description: "Consectetur nulla magna ullamco adipisicing magna aute enim et enim fugiat non dolor. Eiusmod non eiusmod voluptate pariatur eu aliqua et fugiat qui qui enim id. Et ullamco aliqua occaecat id.",
   },
 ]
+
+async function seedAboutMe() {
+  console.log("Initiating seed");
+
+  await prisma.skills.createMany({data: [...skills], skipDuplicates: true});
+  console.log("Seeded Skills");
+
+  await prisma.experiences.createMany({data: [...experiences], skipDuplicates: true});
+  console.log("Seeded Experiences");
+
+  await prisma.certifications.createMany({data: [...certifications], skipDuplicates: true});
+  console.log("Seeded Certifications");
+
+  console.log("Successefully Seeded Database");
+}
+
+seedAboutMe()
+  .catch(e => {
+    console.error(
+      'An error occurred while attempting to seed the database:',
+      e,
+    );
+  })

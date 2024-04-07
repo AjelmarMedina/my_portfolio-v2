@@ -8,7 +8,7 @@ import { Button, ButtonSet } from './ui/button'
 
 // TODO: Customized border
 
-export function Skillsets() {
+export async function Skillsets() {
   const [selected, setSelected] = useState(0)
   
   return (
@@ -79,7 +79,7 @@ export function Skillsets() {
   )
 }
 
-export function Experiences() {
+export async function Experiences() {
   const [selected, setSelected] = useState(0)
   
   return (
@@ -150,7 +150,7 @@ export function Experiences() {
   )
 }
 
-export function Certifications() {
+export async function Certifications() {
   const [selected, setSelected] = useState(0)
   
   return (

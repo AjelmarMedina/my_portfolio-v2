@@ -42,3 +42,18 @@ model Users {
 
   @@map("users")
 }
+
+model Skills {
+  title       String @unique
+  description String
+}
+
+model Experiences {
+  title       String @unique
+  description String
+}
+
+model Certifications {
+  title       String @unique
+  description String
+}
