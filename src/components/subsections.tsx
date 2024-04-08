@@ -7,8 +7,10 @@ import { useState } from "react"
 import { Button, ButtonSet } from './ui/button'
 
 // TODO: Customized border
+// TODO: Suspense & Skeletons
+// TODO: Text shifts layout for Experience and Certifications section
 
-export async function Skillsets() {
+export function Skillsets() {
   const [selected, setSelected] = useState(0)
   
   return (
@@ -79,7 +81,7 @@ export async function Skillsets() {
   )
 }
 
-export async function Experiences() {
+export function Experiences() {
   const [selected, setSelected] = useState(0)
   
   return (
@@ -150,7 +152,7 @@ export async function Experiences() {
   )
 }
 
-export async function Certifications() {
+export function Certifications() {
   const [selected, setSelected] = useState(0)
   
   return (
