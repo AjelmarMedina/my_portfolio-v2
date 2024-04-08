@@ -15,7 +15,7 @@ export function Skillsets() {
   
   return (
     <div
-      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:flex-row md:space-x-[72px] md:px-28 md:py-24"
+      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:px-28 md:py-24"
     >
       <div
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
@@ -24,6 +24,7 @@ export function Skillsets() {
           <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
             Skillset
           </h1>
+          {/* Current Selected */}
           <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
             <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
               <Button 
@@ -52,11 +53,13 @@ export function Skillsets() {
             </div>
           </div>
         </div>
+        {/* Current Paragraph */}
         <p className="prose-text-md md:prose-text-xl">
           {skills[selected].description}
         </p>
         <ButtonSet />
       </div>
+      {/* grid */}
       <div
         className="hidden w-fit lg:grid md:grid-cols-4 md:grid-rows-4 md:gap-4"
       >
@@ -86,8 +89,28 @@ export function Experiences() {
   
   return (
     <div
-      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-primary-100 text-neutral-black lg:flex-row-reverse md:space-x-[72px] md:space-x-reverse md:px-28 md:py-24"
+      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-primary-100 text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:space-x-reverse md:px-28 md:py-24"
     >
+      <div
+        className="hidden w-full min-h-[600px] lg:grid md:grid-cols-2 md:grid-rows-3 md:gap-0.5"
+      >
+        {experiences.map((experience, index) => (
+          <div
+            key={index} 
+            className={cn(
+              "flex flex-col justify-center items-center h-full w-full bg-neutral-50",
+              "p-2 border-[4px] rounded-lg border-blue_Gray-300",
+              "font-bold prose-text-md text-neutral-400 text-center",
+              "select-none hover:cursor-pointer",
+              "transition-all",
+              {"border-dashed border-[2px] hover:border-dashed hover:border-[4px]": index != selected},
+            )}
+            onClick={() => setSelected(index)}
+          >
+            {experience.title}
+          </div>
+        ))}
+      </div>
       <div
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
@@ -128,26 +151,6 @@ export function Experiences() {
         </p>
         <ButtonSet />
       </div>
-      <div
-        className="hidden w-full min-h-[600px] lg:grid md:grid-cols-2 md:grid-rows-3 md:gap-0.5"
-      >
-        {experiences.map((experience, index) => (
-          <div 
-            key={index} 
-            className={cn(
-              "flex flex-col justify-center items-center h-full w-full bg-neutral-50",
-              "p-2 border-[4px] rounded-lg border-blue_Gray-300",
-              "font-bold prose-text-md text-neutral-400 text-center",
-              "select-none hover:cursor-pointer",
-              "transition-all",
-              {"border-dashed border-[2px] hover:border-dashed hover:border-[4px]": index != selected},
-            )}
-            onClick={() => setSelected(index)}
-          >
-            {experience.title}
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
@@ -157,7 +160,7 @@ export function Certifications() {
   
   return (
     <div
-      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:flex-row md:space-x-[72px] md:px-28 md:py-24"
+      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:px-28 md:py-24"
     >
       <div
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
