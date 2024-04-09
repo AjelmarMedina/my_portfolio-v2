@@ -8,7 +8,6 @@ import { Button, ButtonSet } from './ui/button'
 
 // TODO: Customized border
 // TODO: Suspense & Skeletons
-// TODO: Text shifts layout for Experience and Certifications section
 
 export function Skillsets() {
   const [selected, setSelected] = useState(0)
