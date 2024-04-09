@@ -1,16 +1,25 @@
 'use client'
 
-import { certifications, experiences, skills } from "@/lib/data"
-import { cn } from "@/lib/utils"
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-import { useState } from "react"
-import { Button, ButtonSet } from './ui/button'
+import { certificationsFb, experiencesFb, skillsFb } from '@/lib/data';
+import { cn } from "@/lib/utils";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import useSWR from "swr";
+import { Button, ButtonSet } from './ui/button';
+import { Skeleton } from './ui/skeleton';
 
 // TODO: Customized border
-// TODO: Suspense & Skeletons
+
+const fetcher = (url: string) => fetch(url).then(r => r.json())
 
 export function Skillsets() {
   const [selected, setSelected] = useState(0)
+  const [skills, setSkills] = useState(skillsFb)
+  const { data, isLoading } = useSWR("/data/skills", fetcher);
+  
+  useEffect(() => {
+    if (!isLoading) setSkills(data.skills);
+  }, [data, isLoading])
   
   return (
     <div
@@ -21,7 +30,7 @@ export function Skillsets() {
       >
         <div className="w-full">
           <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
-            Skillset
+            Skillset { isLoading }
           </h1>
           {/* Current Selected */}
           <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
@@ -36,9 +45,14 @@ export function Skillsets() {
                 <ChevronLeftIcon className="min-w-8 min-h-8"/>
               </Button>
             </div>
-            <span className="text-center w-fit prose-display-sm md:prose-display-md">
-              {skills[selected].title}
-            </span>
+            {isLoading && (
+              <Skeleton className="w-full h-[30px] md:h-9" />
+            )}
+            {data && (
+              <span className="text-center w-fit prose-display-sm md:prose-display-md">
+                {skills[selected].title}
+              </span>
+            )}
             <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
               <Button
                 stroke="dark"
@@ -53,16 +67,42 @@ export function Skillsets() {
           </div>
         </div>
         {/* Current Paragraph */}
-        <p className="prose-text-md md:prose-text-xl">
-          {skills[selected].description}
-        </p>
+        {isLoading && (
+          <div className='flex flex-col w-full h-fit space-y-2'>
+            <Skeleton className='w-full h-4 md:h-5' />
+            <Skeleton className='w-full h-4 md:h-5' />
+            <Skeleton className='w-12 h-4 md:h-5' />
+          </div>
+        )}
+        {data && (
+          <p className="prose-text-md md:prose-text-xl">
+            {skills[selected].description}
+          </p>
+        )}
         <ButtonSet />
       </div>
       {/* grid */}
       <div
-        className="hidden w-fit lg:grid md:grid-cols-4 md:grid-rows-4 md:gap-4"
+        className="hidden w-full lg:grid md:grid-cols-4 md:grid-rows-4 md:gap-4"
       >
-        {skills.map((skill, index) => (
+        {isLoading && skills.map((skill, index) => (
+          <div 
+            key={index} 
+            className={cn(
+              "flex flex-col justify-center items-center aspect-1 w-full h-full",
+              "p-2 outline outline-[4px] rounded-lg outline-blue_Gray-300",
+              "font-bold prose-text-md text-neutral-400 text-center",
+              "select-none hover:cursor-pointer",
+              "transition-all",
+              {"outline-dashed outline-[2px] hover:outline-dashed hover:outline-[4px]": index != selected},
+            )}
+            onClick={() => setSelected(index)}
+          >
+            <Skeleton className='w-full h-4' />
+          </div>
+          
+        ))}
+        {data && skills.map((skill, index) => (
           <div 
             key={index} 
             className={cn(
@@ -93,7 +133,7 @@ export function Experiences() {
       <div
         className="hidden w-full min-h-[600px] lg:grid md:grid-cols-2 md:grid-rows-3 md:gap-0.5"
       >
-        {experiences.map((experience, index) => (
+        {experiencesFb.map((experience, index) => (
           <div
             key={index} 
             className={cn(
@@ -123,21 +163,21 @@ export function Experiences() {
                 stroke="dark"
                 className="transition-transform hover:cursor-pointer hover:-translate-x-1"
                 onClick={() => {
-                  setSelected(selected > 0 ? selected - 1 : experiences.length -1)
+                  setSelected(selected > 0 ? selected - 1 : experiencesFb.length -1)
                 }}
               >
                 <ChevronLeftIcon className="min-w-8 min-h-8"/>
               </Button>
             </div>
             <span className="text-center w-fit prose-display-sm md:prose-display-md">
-              {experiences[selected].title}
+              {experiencesFb[selected].title}
             </span>
             <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
               <Button
                 stroke="dark"
                 className="transition-transform hover:cursor-pointer hover:translate-x-1"
                 onClick={() => {
-                  setSelected(selected < experiences.length -1 ? selected + 1 : 0)
+                  setSelected(selected < experiencesFb.length -1 ? selected + 1 : 0)
                 }}
               >
                 <ChevronRightIcon className="min-w-8 min-h-8"/>
@@ -146,7 +186,7 @@ export function Experiences() {
           </div>
         </div>
         <p className="prose-text-md md:prose-text-xl">
-          {experiences[selected].description}
+          {experiencesFb[selected].description}
         </p>
         <ButtonSet />
       </div>
@@ -174,21 +214,21 @@ export function Certifications() {
                 stroke="dark"
                 className="transition-transform hover:cursor-pointer hover:-translate-x-1"
                 onClick={() => {
-                  setSelected(selected > 0 ? selected - 1 : certifications.length -1)
+                  setSelected(selected > 0 ? selected - 1 : certificationsFb.length -1)
                 }}
               >
                 <ChevronLeftIcon className="min-w-8 min-h-8"/>
               </Button>
             </div>
             <span className="text-center w-fit prose-display-sm md:prose-display-md">
-              {certifications[selected].title}
+              {certificationsFb[selected].title}
             </span>
             <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
               <Button
                 stroke="dark"
                 className="transition-transform hover:cursor-pointer hover:translate-x-1"
                 onClick={() => {
-                  setSelected(selected < certifications.length -1 ? selected + 1 : 0)
+                  setSelected(selected < certificationsFb.length -1 ? selected + 1 : 0)
                 }}
               >
                 <ChevronRightIcon className="min-w-8 min-h-8"/>
@@ -197,14 +237,14 @@ export function Certifications() {
           </div>
         </div>
         <p className="prose-text-md md:prose-text-xl">
-          {certifications[selected].description}
+          {certificationsFb[selected].description}
         </p>
         <ButtonSet />
       </div>
       <div
         className="w-full min-h-[600px] hidden flex-col justify-center items-center space-y-6 lg:flex"
       >
-        {certifications.map((certificate, index) => (
+        {certificationsFb.map((certificate, index) => (
           <div
             key={index} 
             className={cn(

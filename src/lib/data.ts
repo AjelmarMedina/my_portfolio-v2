@@ -1,27 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-import { unstable_noStore as noStore } from "next/cache";
-
-const prisma = new PrismaClient();
-
-export async function fetchSkills() {
-  noStore();
-  const data = await prisma.skills.findMany();
-  return data;
-}
-
-export async function fetchExperiences() {
-  noStore();
-  const data = await prisma.experiences.findMany();
-  return data;
-}
-
-export async function fetchCertifications() {
-  noStore();
-  const data = await prisma.certifications.findMany();
-  return data;
-}
-
-export const skills = [
+export const skillsFb = [
   {
     title: "Design System",
     description: "Body Extra Large. Most fonts have a particular weight which corresponds to one of the numbers in Common weight name mapping. However some fonts, called variable fonts, can support a range of weights with a more or less fine granularity, and this can gi"
@@ -88,7 +65,7 @@ export const skills = [
   },
 ]
 
-export const experiences = [
+export const experiencesFb = [
   {
     title: "AppCon 2023",
     description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio odio eaque labore et illo aliquid possimus quidem officia veniam commodi. Explicabo perspiciatis nemo sunt ducimus, et dolore perferendis odit aut asperiores ut?",
@@ -115,7 +92,7 @@ export const experiences = [
   },
 ]
 
-export const certifications = [
+export const certificationsFb = [
   {
     title: "AppCon 2023",
     description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio odio eaque labore et illo aliquid possimus quidem officia veniam commodi. Explicabo perspiciatis nemo sunt ducimus, et dolore perferendis odit aut asperiores ut?",
