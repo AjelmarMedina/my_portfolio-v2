@@ -10,7 +10,6 @@ import { Skeleton } from './ui/skeleton';
 
 // TODO: Customized border
 // TODO: min-heights for each subsection
-// TODO: DB fetch + Skeletons for `Experiences` & `Certifications` subsections
 // TODO: Content Backgrounds + Grid Backgrounds
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
@@ -32,7 +31,7 @@ export function Skillsets() {
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
         <div className="w-full">
-          <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
+          <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
             Skillset { isLoading }
           </h1>
           {/* Current Selected */}
@@ -88,24 +87,7 @@ export function Skillsets() {
       <div
         className="hidden w-full lg:grid md:grid-cols-4 md:grid-rows-4 md:gap-4"
       >
-        {isLoading && skills.map((skill, index) => (
-          <div 
-            key={index} 
-            className={cn(
-              "flex flex-col justify-center items-center aspect-1 w-full h-full",
-              "p-2 outline outline-[4px] rounded-lg outline-blue_Gray-300",
-              "font-bold prose-text-md text-neutral-400 text-center",
-              "select-none hover:cursor-pointer",
-              "transition-all",
-              {"outline-dashed outline-[2px] hover:outline-dashed hover:outline-[4px]": index != selected},
-            )}
-            onClick={() => setSelected(index)}
-          >
-            <Skeleton className='w-full h-4' />
-          </div>
-          
-        ))}
-        {data && skills.map((skill, index) => (
+        {skills.map((skill, index) => (
           <div 
             key={index} 
             className={cn(
@@ -118,7 +100,10 @@ export function Skillsets() {
             )}
             onClick={() => setSelected(index)}
           >
-            {skill.title}
+            {!isLoading 
+              ? skill.title
+              : (<Skeleton className='w-full h-4' />)
+            }
           </div>
         ))}
       </div>
@@ -142,7 +127,8 @@ export function Experiences() {
       <div
         className="hidden w-full min-h-[600px] lg:grid md:grid-cols-2 md:grid-rows-3 md:gap-0.5"
       >
-        {isLoading && experiences.map((experience, index) => (
+
+        {experiences.map((experience, index) => (
           <div
             key={index} 
             className={cn(
@@ -155,23 +141,10 @@ export function Experiences() {
             )}
             onClick={() => setSelected(index)}
           >
-            <Skeleton className='w-full h-4' />
-          </div>
-        ))}
-        {data && experiences.map((experience, index) => (
-          <div
-            key={index} 
-            className={cn(
-              "flex flex-col justify-center items-center h-full w-full bg-neutral-50",
-              "p-2 border-[4px] rounded-lg border-blue_Gray-300",
-              "font-bold prose-text-md text-neutral-400 text-center",
-              "select-none hover:cursor-pointer",
-              "transition-all",
-              {"border-dashed border-[2px] hover:border-dashed hover:border-[4px]": index != selected},
-            )}
-            onClick={() => setSelected(index)}
-          >
-            {experience.title}
+            {!isLoading
+              ? experience.title
+              : (<Skeleton className='w-[75%] h-4' />)
+            }
           </div>
         ))}
       </div>
@@ -179,7 +152,7 @@ export function Experiences() {
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
         <div className="w-full">
-          <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
+          <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
             Experiences
           </h1>
           <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
@@ -250,7 +223,7 @@ export function Certifications() {
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
         <div className="w-full">
-          <h1 className="min-w-full font-bold prose-display-md md:prose-display-lg">
+          <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
             Awards & Certifications
           </h1>
           <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
@@ -316,7 +289,7 @@ export function Certifications() {
             )}
             onClick={() => setSelected(index)}
           >
-            {!isLoading 
+            {!isLoading
               ? certificate.title
               : (<Skeleton className='w-[50%] h-4' />)
             }

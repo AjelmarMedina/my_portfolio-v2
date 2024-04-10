@@ -56,7 +56,7 @@ const buttonVariants = cva(
       size: {
         sm: "px-3 p-2",
         md: "px-5 py-3",
-        lg: "px-6 py-4",
+        lg: "px-5 py-3 md:px-6 md:py-4",
       },
     },
     compoundVariants: [
@@ -92,11 +92,10 @@ export interface ButtonProps
 /**
  * @param className className
  * @param variant ("fill", "outline", "ghost", "link") - Type of button
- * @param colorFill ("accent", "dark", "destructive") - background color for `fill` variant
- * @param colorOutline ("accent", "dark", "destructive") - border color for `outline` variant
- * @param colorText ("accent", "dark", "destructive") - border color for `outline` variant
+ * @param fill ("accent", "dark", "destructive") - background color for `fill` variant
+ * @param outline ("accent", "dark", "destructive") - border color for `outline` variant
+ * @param stroke ("accent", "dark", "destructive") - border color for `outline` variant
  * @param size ('md' | 'sm' | 'lg' )
- * @param sizeIcon ('md' | 'sm' | 'lg' ) - static button sizes
  * @param asChild Link as child
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

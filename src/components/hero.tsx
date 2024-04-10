@@ -9,7 +9,7 @@ import { zillaSlab } from "./ui/fonts";
 export default function Hero() {
   return (
     <div
-      className="flex flex-col justify-between items-center w-full h-[100vh] bg-hero-radial-md text-center drop-shadow-2xl md:flex-row"
+      className="flex flex-col justify-between items-center w-full h-[100vh] bg-hero-radial-md text-center drop-shadow-2xl -space-y-8 md:space-y-0 md:flex-row md:-space-x-12 lg:space-x-0"
     >
       <div className="hidden w-full h-full hero--radial-gradient__left bg-neutral-50 select-none md:block">
         <Image
@@ -34,14 +34,14 @@ export default function Hero() {
           priority
         />
       </div>
-      <ChevronDown className="absolute bottom-4 w-8 h-8 text-neutral-light/60 animate-bounce md:hidden" />
+      <ChevronDown className="absolute bottom-2 w-10 h-10 text-neutral-light/60 animate-bounce md:hidden" />
     </div>
   )
 }
 
 function Content() {
   return (
-    <div className="flex flex-col h-auto space-y-8 justify-center items-center w-fit pt-20 md:h-full">
+    <div className="flex flex-col z-10 h-auto space-y-8 justify-center items-center w-fit pt-16 lg:pt-20 md:h-full">
       {/* Heading */}
       <div className={cn("max-w-[375px] w-full prose-display-lg font-bold itali px-4 md:px-0 md:max-w-[28rem] md:prose-display-2xl", zillaSlab.className)}>
         <div className="flex flex-row w-full">
@@ -60,7 +60,7 @@ function Content() {
         <h1 className="font-medium w-full prose-display-xs text-neutral-light md:w-max md:prose-display-md">
           Front-end Web Developer & Designer
         </h1>
-        <h2 className="w-full prose-text-xs text-neutral-300 md:px-8 md:prose-text-xl">
+        <h2 className="w-full prose-text-sm text-neutral-300 md:px-8 md:prose-text-xl">
           I am a Student who spends his free time learning to code and design websites from the ground up to deployment!
         </h2>
       </div>
@@ -77,7 +77,7 @@ function Content() {
           </Link>
         </Button>
       </div>
-      <ChevronDown className="hidden absolute bottom-8 w-16 h-16 text-neutral-light/60 animate-bounce md:block" />
+      <ChevronDown className="hidden absolute bottom-4 w-12 h-12 text-neutral-light/60 animate-bounce md:block" />
     </div>
   )
 }
