@@ -235,7 +235,13 @@ export function Experiences() {
 
 export function Certifications() {
   const [selected, setSelected] = useState(0)
+  const [certifications, setCertifications] = useState(certificationsFb)
+  const { data, isLoading } = useSWR("/data/certifications", fetcher);
   
+  useEffect(() => {
+    if (!isLoading) setCertifications(data.certifications);
+  }, [data, isLoading])
+
   return (
     <div
       className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:px-28 md:py-24"
@@ -253,21 +259,26 @@ export function Certifications() {
                 stroke="dark"
                 className="transition-transform hover:cursor-pointer hover:-translate-x-1"
                 onClick={() => {
-                  setSelected(selected > 0 ? selected - 1 : certificationsFb.length -1)
+                  setSelected(selected > 0 ? selected - 1 : certifications.length -1)
                 }}
               >
                 <ChevronLeftIcon className="min-w-8 min-h-8"/>
               </Button>
             </div>
-            <span className="text-center w-fit prose-display-sm md:prose-display-md">
-              {certificationsFb[selected].title}
-            </span>
+            {isLoading && (
+              <Skeleton className="w-full h-[30px] md:h-9" />
+            )}
+            {data && (
+              <span className="text-center w-fit prose-display-sm md:prose-display-md">
+                {certifications[selected].title}
+              </span>
+            )}
             <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
               <Button
                 stroke="dark"
                 className="transition-transform hover:cursor-pointer hover:translate-x-1"
                 onClick={() => {
-                  setSelected(selected < certificationsFb.length -1 ? selected + 1 : 0)
+                  setSelected(selected < certifications.length -1 ? selected + 1 : 0)
                 }}
               >
                 <ChevronRightIcon className="min-w-8 min-h-8"/>
@@ -275,15 +286,24 @@ export function Certifications() {
             </div>
           </div>
         </div>
-        <p className="prose-text-md md:prose-text-xl">
-          {certificationsFb[selected].description}
-        </p>
+        {isLoading && (
+          <div className='flex flex-col w-full h-fit space-y-2'>
+            <Skeleton className='w-full h-4 md:h-5' />
+            <Skeleton className='w-full h-4 md:h-5' />
+            <Skeleton className='w-12 h-4 md:h-5' />
+          </div>
+        )}
+        {data && (
+          <p className="prose-text-md md:prose-text-xl">
+            {certifications[selected].description}
+          </p>
+        )}
         <ButtonSet />
       </div>
       <div
         className="w-full min-h-[600px] hidden flex-col justify-center items-center space-y-6 lg:flex"
       >
-        {certificationsFb.map((certificate, index) => (
+        {certifications.map((certificate, index) => (
           <div
             key={index} 
             className={cn(
@@ -296,7 +316,10 @@ export function Certifications() {
             )}
             onClick={() => setSelected(index)}
           >
-            {certificate.title}
+            {!isLoading 
+              ? certificate.title
+              : (<Skeleton className='w-[50%] h-4' />)
+            }
           </div>
         ))}
       </div>
