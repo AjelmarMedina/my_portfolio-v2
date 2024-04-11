@@ -192,10 +192,35 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "ajelmar-slide-in": {
+          from: { transform: "translate(50vw)"},
+          to: { transform: "translate(0vw)"}
+        },
+        "medina-slide-in": {
+          from: { transform: "translate(-50vw)"},
+          to: { transform: "translate(0vw)"}
+        },
+        "image-left-slide-in": {
+          from: { transform: "translate(-50vw)" },
+          to: { transform: "translate(0vw)" }
+        },
+        "image-right-slide-in": {
+          from: { transform: "translate(50vw)" },
+          to: { transform: "translate(0vw)" }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "ajelmar-slide-in": "ajelmar-slide-in 0.75s",
+        "medina-slide-in": "medina-slide-in 0.75s",
+        "image-left-slide-in": "image-left-slide-in 1.25s ease-out 2s forwards",
+        "image-right-slide-in": "image-right-slide-in 1.25s ease-out 2s forwards",
+        "fade-in--body": "fade-in--body 2.75s ease-out 4s forwards",
+        "fade-in--buttons": "fade-in--body 2.75s ease-out 6s forwards",
+        "fade-in": "fade-in 2.5s ease-out 6s forwards",
+        "show-sections": "show-sections 1.5s ease-in-out 4s forwards",
+        "mobile-hero-image": "mobile-hero-image 2.5s ease-in-out 6s forwards",
       },
     },
   },

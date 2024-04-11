@@ -31,6 +31,33 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@keyframes fade-in--body {
+  from {
+    max-height: 0%;
+    opacity: 0;
+  }
+  to {
+    max-height: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes show-sections {
+  from { max-height: 0%; }
+  to { max-height: 100%; }
+}
+
+@keyframes mobile-hero-image {
+  from { max-height: 0%; opacity: 0;}
+  50% { max-height: 100%; opacity: 0; }
+  to { max-height: 100%; opacity: 1;}
+}
+
 @layer components {
   .hero--radial-gradient__left {
     mask-image: radial-gradient(ellipse 100% 100% at left center, #000 50%, transparent 100%);;

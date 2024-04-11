@@ -7,7 +7,7 @@ export default function Page() {
     <main className="flex flex-col overflow-x-clip items-center justify-between">
       <Hero />
       <div
-        className="flex flex-col items-center w-full h-fit"
+        className="flex flex-col items-center w-full h-fit max-h-0 overflow-clip animate-show-sections"
       >
         <Header
           header="About Me"
