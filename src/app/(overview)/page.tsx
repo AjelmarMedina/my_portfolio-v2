@@ -4,7 +4,7 @@ import { Certifications, Experiences, Skillsets } from '../../components/subsect
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col overflow-x-clip items-center justify-between">
+    <main className="flex flex-col overflow-x-clip items-center justify-between">
       <Hero />
       <div
         className="flex flex-col items-center w-full h-fit"
