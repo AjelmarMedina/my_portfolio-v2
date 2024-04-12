@@ -102,10 +102,6 @@ export const certificationsFb = [
     description: "Vestibulum nec libero vel nulla finibus venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent dui.",
   },
   {
-    title: "Farmacia Landrito",
-    description: "Sit cillum nostrud do exercitation cupidatat. Et exercitation amet fugiat ad deserunt nisi Lorem quis nulla. Dolore laborum do minim mollit.",
-  },
-  {
     title: "Academe & Education",
     description: "Consectetur nulla magna ullamco adipisicing magna aute enim et enim fugiat non dolor. Eiusmod non eiusmod voluptate pariatur eu aliqua et fugiat qui qui enim id. Et ullamco aliqua occaecat id.",
   },
