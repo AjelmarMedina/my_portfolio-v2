@@ -1,11 +1,12 @@
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
 // TODO: modify destructive states
-// TODO: modify stroke styles
 // TODO: modify ghost states
 const buttonVariants = cva(
   [
@@ -48,14 +49,14 @@ const buttonVariants = cva(
         destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
       stroke: {
-        dark: "bg-neutral-black text-neutral-white",
-        accent: "bg-accent-300",
-        destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
+        dark: "text-neutral-black",
+        accent: "text-accent-300",
+        destructive: "text-error-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
       size: {
         sm: "px-3 p-2",
         md: "px-5 py-3",
-        lg: "px-6 py-4",
+        lg: "px-5 py-3 md:px-6 md:py-4",
       },
     },
     compoundVariants: [
@@ -91,11 +92,10 @@ export interface ButtonProps
 /**
  * @param className className
  * @param variant ("fill", "outline", "ghost", "link") - Type of button
- * @param colorFill ("accent", "dark", "destructive") - background color for `fill` variant
- * @param colorOutline ("accent", "dark", "destructive") - border color for `outline` variant
- * @param colorText ("accent", "dark", "destructive") - border color for `outline` variant
+ * @param fill ("accent", "dark", "destructive") - background color for `fill` variant
+ * @param outline ("accent", "dark", "destructive") - border color for `outline` variant
+ * @param stroke ("accent", "dark", "destructive") - border color for `outline` variant
  * @param size ('md' | 'sm' | 'lg' )
- * @param sizeIcon ('md' | 'sm' | 'lg' ) - static button sizes
  * @param asChild Link as child
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -114,3 +114,22 @@ Button.displayName = "Button"
 
 export { Button, buttonVariants }
 
+/**
+ * A simple button set with a accent primary and a dark secondary with default text
+ */
+export function ButtonSet() {
+  return (
+    <div className="flex flex-row px-0 space-x-4 w-min px-4sm:">
+      <Button fill={"accent"} size={"lg"} asChild>
+        <Link href={"https://www.linkedin.com/in/ajelmar-medina/"} target="_blank">
+          Get in touch! <ArrowRight className="ml-2" />
+        </Link>
+      </Button>
+      <Button variant={"outline"} outline={"dark"} size={"lg"} asChild>
+        <Link href={"https://github.com/AjelmarMedina"} target="_blank">
+          About me...
+        </Link>
+      </Button>
+    </div>
+  )
+}

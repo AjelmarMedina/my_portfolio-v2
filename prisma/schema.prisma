@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Customers {
+  id        String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name      String @db.VarChar(255)
+  email     String @db.VarChar(255)
+  image_url String @db.VarChar(255)
+
+  @@map("customers")
+}
+
+model Invoices {
+  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  customer_id String   @db.Uuid
+  amount      Int
+  status      String   @db.VarChar(255)
+  date        DateTime @db.Date
+
+  @@map("invoices")
+}
+
+model Revenue {
+  month   String @unique @db.VarChar(4)
+  revenue Int
+
+  @@map("revenue")
+}
+
+model Users {
+  id       String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name     String @db.VarChar(255)
+  email    String @unique
+  password String
+
+  @@map("users")
+}
+
+model Skills {
+  title       String @unique
+  description String
+}
+
+model Experiences {
+  title       String @unique
+  description String
+}
+
+model Certifications {
+  title       String @unique
+  description String
+}
