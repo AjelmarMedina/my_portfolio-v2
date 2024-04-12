@@ -11,7 +11,7 @@ export default function Page() {
       >
         <Header
           header="About Me"
-          paragraph="Body Extra Large. Most fonts have a particular weight which corresponds to one of the numbers in Common weight name mapping. However some fonts, called variable fonts, can support a range of weights with a more or less"
+          paragraph="Learn about the various qualities that I possess and continue to uphold. I talk about my skills, experiences, and even my certifications or recognitions. Going in-depth with each point of interest describing how I have shaped them, and utilized for the modern environment I live in."
         />
         <Skillsets />
         <Experiences />
