@@ -6,7 +6,7 @@ import { Header } from "./ui/header-section";
 export function AboutMe() {
   return (
     <div
-      className="flex flex-col items-center w-full h-fit max-h-0 overflow-clip animate-show-sections"
+      className="flex flex-col items-center w-full h-fit bg-neutral-50 max-h-0 overflow-clip animate-show-sections"
     >
       <Header
         header="About Me"

@@ -85,10 +85,10 @@ export function Skillsets() {
       className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:px-28 md:py-24"
     >
       <div
-        className="flex flex-col items-center space-y-10 w-fit lg:items-start"
+        className="flex flex-col justify-center items-center space-y-10 w-fit lg:min-h-[520px] lg:items-start"
       >
         <div className="w-full">
-          <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
+          <h1 className="min-w-full font-bold prose-display-md text-center text-[80%] md:prose-display-lg lg:text-start">
             Skillset {isLoading}
           </h1>
           <Subheading />
