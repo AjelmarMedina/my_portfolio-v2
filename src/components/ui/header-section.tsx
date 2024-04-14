@@ -5,7 +5,7 @@
  */
 
 export function Header(
-  { header, paragraph }: { header: string; paragraph: string; }
+  { header, children }: Readonly<{ header: string; children: React.ReactNode; }>
 ) {
   return (
     <div
@@ -16,7 +16,7 @@ export function Header(
           {header}
         </h1>
         <p className="text-center prose-text-md md:prose-text-xl">
-          {paragraph}
+          {children}
         </p>
       </div>
     </div>

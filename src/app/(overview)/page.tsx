@@ -20,11 +20,17 @@ export default function Page() {
       >
         <Header
           header="About Me"
-          paragraph="Learn about the various qualities that I possess and continue to uphold. I talk about my skills, experiences, and even my certifications or recognitions. Going in-depth with each point of interest describing how I have shaped them, and utilized for the modern environment I live in."
-        />
+        >
+          Learn about the various qualities that I possess and continue to uphold. I talk about my skills, experiences, and even my certifications or recognitions. Going in-depth with each point of interest describing how I have shaped them, and utilized for the modern environment I live in.
+        </Header>
         <Skillsets />
         <Experiences />
         <Certifications />
+      </div>
+      <div
+        className="flex flex-col items-center w-full h-fit max-h-0 overflow-clip animate-show-sections"
+      >
+
       </div>
     </main>
   )
