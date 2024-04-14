@@ -1,6 +1,8 @@
+import { Certifications } from '@/components/(about-me)/Certifications';
+import { Experiences } from '@/components/(about-me)/Experiences';
+import { Skillsets } from '@/components/(about-me)/Skillsets';
 import Hero from "@/components/hero";
 import { Header } from "@/components/ui/header-section";
-import { Certifications, Experiences, Skillsets } from '../../components/subsections';
 
 export default function Page() {
   return (

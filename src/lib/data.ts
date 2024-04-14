@@ -1,3 +1,5 @@
+export const fetcher = (url: string) => fetch(url).then(r => r.json());
+
 export const skillsFb = [
   {
     title: "Design System",
