@@ -7,13 +7,6 @@ import useSWR from "swr";
 import { Button, ButtonSet } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
 
-// TODO: Customized border
-// TODO: min-heights for each subsection
-// TODO: Content Backgrounds + Grid Backgrounds
-// TODO: Animate scroll trigger
-// TODO: Animate transition state change
-// TODO: Bring back GSAP
-
 export function Skillsets() {
   const [selected, setSelected] = useState(0);
   const [skills, setSkills] = useState(skillsFb);

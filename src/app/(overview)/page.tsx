@@ -4,6 +4,13 @@ import { Skillsets } from '@/components/(about-me)/Skillsets';
 import Hero from "@/components/hero";
 import { Header } from "@/components/ui/header-section";
 
+// TODO: Customized border
+// TODO: min-heights for each subsection
+// TODO: Content Backgrounds + Grid Backgrounds
+// TODO: Animate scroll trigger
+// TODO: Animate transition state change
+// TODO: Bring back GSAP
+
 export default function Page() {
   return (
     <main className="flex flex-col overflow-x-clip items-center justify-between">
