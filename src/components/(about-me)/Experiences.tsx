@@ -17,10 +17,8 @@ export function Experiences() {
     if (!isLoading) setExperiences(data.experiences);
   }, [data, isLoading]);
 
-  return (
-    <div
-      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-primary-100 text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:space-x-reverse md:px-28 md:py-24"
-    >
+  function Grid() {
+    return (
       <div
         className="hidden w-full min-h-[600px] lg:grid md:grid-cols-2 md:grid-rows-3 md:gap-0.5"
       >
@@ -44,6 +42,51 @@ export function Experiences() {
           </div>
         ))}
       </div>
+    )
+  }
+  
+  function Subheading() {
+    return (
+      <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
+        <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+          <Button
+            stroke="dark"
+            className="transition-transform hover:cursor-pointer hover:-translate-x-1"
+            onClick={() => {
+              setSelected(selected > 0 ? selected - 1 : experiences.length - 1);
+            }}
+          >
+            <ChevronLeftIcon className="min-w-8 min-h-8" />
+          </Button>
+        </div>
+        {isLoading && (
+          <Skeleton className="w-full h-[30px] md:h-9" />
+        )}
+        {data && (
+          <span className="text-center w-fit prose-display-sm md:prose-display-md">
+            {experiences[selected].title}
+          </span>
+        )}
+        <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
+          <Button
+            stroke="dark"
+            className="transition-transform hover:cursor-pointer hover:translate-x-1"
+            onClick={() => {
+              setSelected(selected < experiences.length - 1 ? selected + 1 : 0);
+            }}
+          >
+            <ChevronRightIcon className="min-w-8 min-h-8" />
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div
+      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-primary-100 text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:space-x-reverse md:px-28 md:py-24"
+    >
+      <Grid />
       <div
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
       >
@@ -51,38 +94,7 @@ export function Experiences() {
           <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
             Experiences
           </h1>
-          <div className="flex flex-row items-center justify-around min-w-full lg:justify-start">
-            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
-              <Button
-                stroke="dark"
-                className="transition-transform hover:cursor-pointer hover:-translate-x-1"
-                onClick={() => {
-                  setSelected(selected > 0 ? selected - 1 : experiences.length - 1);
-                }}
-              >
-                <ChevronLeftIcon className="min-w-8 min-h-8" />
-              </Button>
-            </div>
-            {isLoading && (
-              <Skeleton className="w-full h-[30px] md:h-9" />
-            )}
-            {data && (
-              <span className="text-center w-fit prose-display-sm md:prose-display-md">
-                {experiences[selected].title}
-              </span>
-            )}
-            <div className="lg:overflow-hidden lg:w-0 lg:focus-within:w-fit lg:focus-within:overflow-visible">
-              <Button
-                stroke="dark"
-                className="transition-transform hover:cursor-pointer hover:translate-x-1"
-                onClick={() => {
-                  setSelected(selected < experiences.length - 1 ? selected + 1 : 0);
-                }}
-              >
-                <ChevronRightIcon className="min-w-8 min-h-8" />
-              </Button>
-            </div>
-          </div>
+          <Subheading />
         </div>
         {isLoading && (
           <div className='flex flex-col w-full h-fit space-y-2'>
