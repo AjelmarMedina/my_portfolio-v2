@@ -6,7 +6,7 @@ export function Projects() {
     className="flex flex-col items-center w-full h-fi bg-primary-100 max-h-0 overflow-clip animate-show-sections"
   >
     <Header header="Projects">
-      Body Extra Large. Most fonts have a particular weight which corresponds to one of the numbers in Common weight name mapping. However some fonts, called variable fonts, can support a range of weights with a more or less
+      I make applications with quality as top priority. Presented are some of the projects that I&apos;ve worked on. Not only will they validate the skills that I present myself with— they reflect real world problems.
     </Header>
   </div>
   )
