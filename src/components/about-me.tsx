@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { Certifications } from "./(about-me)/Certifications";
 import { Experiences } from "./(about-me)/Experiences";
 import { Skillsets } from "./(about-me)/Skillsets";
@@ -6,7 +7,10 @@ import { Header } from "./ui/header-section";
 export function AboutMe() {
   return (
     <div
-      className="flex flex-col items-center w-full h-fit bg-neutral-50 max-h-0 overflow-clip animate-show-sections"
+      className={cn(
+        "flex flex-col items-center w-full h-fit bg-neutral-50 overflow-clip",
+        (false && "max-h-0 animate-show-sections") // toggle hero intro for development
+      )}
     >
       <Header
         header="About Me"

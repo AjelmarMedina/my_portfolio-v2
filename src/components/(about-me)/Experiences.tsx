@@ -1,28 +1,52 @@
 'use client';
 import { experiencesFb, fetcher } from '@/lib/data';
 import { cn } from "@/lib/utils";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import { Button, ButtonSet } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
 
+gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export function Experiences() {
   const [selected, setSelected] = useState(0);
   const [experiences, setExperiences] = useState(experiencesFb);
   const { data, isLoading } = useSWR("/data/experiences", fetcher);
+  const content = useRef(null);
+  const grid = useRef(null);
 
   useEffect(() => {
     if (!isLoading) setExperiences(data.experiences);
   }, [data, isLoading]);
 
+  useGSAP(() => {
+    gsap.from(content.current, {
+      scrollTrigger: {
+        trigger: content.current,
+      },
+      opacity: 0,
+      x: 128,
+      duration: 1.5,
+    })
+    gsap.from(grid.current, {
+      scrollTrigger: {
+        trigger: grid.current,
+      },
+      opacity: 0,
+      x: -128,
+      duration: 1.5,
+    })
+  })
+
   function Grid() {
     return (
       <div
-        className="hidden w-full min-h-[600px] lg:grid md:grid-cols-2 md:grid-rows-3 md:gap-0.5"
+        className="_grid hidden w-full min-h-[600px] lg:grid md:grid-cols-2 md:grid-rows-3 md:gap-0.5"
       >
-
         {experiences.map((experience, index) => (
           <div
             key={index}
@@ -86,9 +110,12 @@ export function Experiences() {
     <div
       className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-primary-100 text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:space-x-reverse md:px-28 md:py-24"
     >
-      <Grid />
+      <div className='w-full' ref={grid}>
+        <Grid />
+      </div>
       <div
         className="flex flex-col items-center space-y-10 w-fit lg:items-start"
+        ref={content}
       >
         <div className="w-full">
           <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">

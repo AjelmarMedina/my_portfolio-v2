@@ -1,20 +1,46 @@
 'use client';
 import { fetcher, skillsFb } from '@/lib/data';
 import { cn } from "@/lib/utils";
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import { Button, ButtonSet } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function Skillsets() {
   const [selected, setSelected] = useState(0);
   const [skills, setSkills] = useState(skillsFb);
   const { data, isLoading } = useSWR("/data/skills", fetcher);
+  const content = useRef(null);
+  const grid = useRef(null);
 
   useEffect(() => {
     if (!isLoading) setSkills(data.skills);
   }, [data, isLoading]);
+
+  useGSAP(() => {
+    gsap.from(content.current, {
+      scrollTrigger: {
+        trigger: content.current,
+      },
+      opacity: 0,
+      x: -128,
+      duration: 1.5,
+    })
+    gsap.from(grid.current, {
+      scrollTrigger: {
+        trigger: grid.current,
+      },
+      opacity: 0,
+      x: 128,
+      duration: 1.5,
+    })
+  })
 
   function Grid() {
     return (
@@ -86,6 +112,7 @@ export function Skillsets() {
     >
       <div
         className="flex flex-col justify-center items-center space-y-10 w-fit lg:min-h-[520px] lg:items-start"
+        ref={content}
       >
         <div className="w-full">
           <h1 className="min-w-full font-bold prose-display-md text-center text-[80%] md:prose-display-lg lg:text-start">
@@ -107,7 +134,9 @@ export function Skillsets() {
         )}
         <ButtonSet />
       </div>
-      <Grid />
+      <div className='w-full' ref={grid}>
+        <Grid />
+      </div>
     </div>
   );
 }
