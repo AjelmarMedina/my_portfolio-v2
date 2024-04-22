@@ -115,7 +115,7 @@ export function Skillsets() {
         ref={content}
       >
         <div className="w-full">
-          <h1 className="min-w-full font-bold prose-display-md text-center text-[80%] md:prose-display-lg lg:text-start">
+          <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
             Skillset {isLoading}
           </h1>
           <Subheading />
