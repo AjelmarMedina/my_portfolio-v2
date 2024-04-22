@@ -114,6 +114,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-radial-md" : "radial-gradient(circle at 0 0, #001833 30%, #004799 100%)",
+        "project1": "url('/projects/my-portfolio-v2.png')"
       },
       typography: {
         'display-2xl': {
