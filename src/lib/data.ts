@@ -108,3 +108,66 @@ export const certificationsFb = [
     description: "Consectetur nulla magna ullamco adipisicing magna aute enim et enim fugiat non dolor. Eiusmod non eiusmod voluptate pariatur eu aliqua et fugiat qui qui enim id. Et ullamco aliqua occaecat id.",
   },
 ]
+
+export const projects = [
+  {
+    title: "Project 1",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 2",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 3",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 4",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 5",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 6",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 7",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 8",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 9",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+  {
+    title: "Project 10",
+    tags: [],
+    description: "",
+    bgUrl: "",
+  },
+]
