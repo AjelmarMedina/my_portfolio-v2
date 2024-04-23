@@ -16,7 +16,7 @@ export function ProjectGrid() {
     <div
         className={cn("flex flex-row justify-center items-center w-full h-fit text-neutral-black px-4 pb-14 md:px-28 md:pb-24", (selected && "md:h-screen"))}
     >
-      {!selected && (
+      {selected === null && (
         <div className="w-full h-fit grid grid-rows-5 grid-cols-2 gap-4">
           {projects.map((project, index) => (
             <Button
@@ -29,7 +29,7 @@ export function ProjectGrid() {
           ))}
         </div>
       )}
-      {selected && (
+      {selected !== null && (
         <div
           className="flex flex-row justify-center items-center w-full lg:px-28"
         >
