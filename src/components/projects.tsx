@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ProjectGrid } from './project-grid';
+import { ProjectGrid } from './(projects)/project-grid';
 import { Header } from "./ui/header-section";
 
 export function Projects() {

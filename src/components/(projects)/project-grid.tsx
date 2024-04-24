@@ -3,7 +3,7 @@
 import { projects } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { useCallback, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export function ProjectGrid() {
   const [selected, setSelected] = useState<number | null>(null);
