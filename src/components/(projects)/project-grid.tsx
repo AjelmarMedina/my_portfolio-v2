@@ -28,44 +28,57 @@ export function ProjectGrid() {
     >
       <AnimatePresence mode="popLayout">
         {selected === null && (
-          <motion.div
-            key={"grid"}
-            className="w-full h-fit flex flex-col justify-center items-center space-y-4 sm:grid grid-rows-5 grid-cols-2 gap-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {projects.map((project, index) => (
-              <Button
-                className="w-full aspect-[16/9] bg-project1 bg-accent-100"
-                key={index}
-                onClick={() => {
-                  setSelected(index);
-                  scrollIntoView();
-                }}
-              >
-                {project.title}
-              </Button>
-            ))}
-          </motion.div>
+          <Grid />
         )}
         {selected !== null && (
-          <motion.div
-            key={"selected"}
-            className="flex flex-row justify-center items-center w-full lg:px-28"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <Button
-              className="w-full aspect-[16/9] bg-project1 bg-accent-100"
-              onClick={() => setSelected(null)}
-            >
-              {projects[selected].title}
-            </Button>
-          </motion.div>
+          <SelectedCard />
         )}
       </AnimatePresence>
     </div>
   )
+
+  function Grid() {
+    return (
+      <motion.div
+        key={"grid"}
+        className="w-full h-fit flex flex-col justify-center items-center space-y-4 sm:grid grid-rows-5 grid-cols-2 gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        {projects.map((project, index) => (
+          <Button
+            className="w-full aspect-[16/9] bg-project1 bg-accent-100"
+            key={index}
+            onClick={() => {
+              setSelected(index);
+              scrollIntoView();
+            } }
+          >
+            {project.title}
+          </Button>
+        ))}
+      </motion.div>
+    )
+  }
+
+  function SelectedCard() {
+    return (
+      <motion.div
+        key={"selected"}
+        className="flex flex-row justify-center items-center w-full lg:px-28"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Button
+          className="w-full aspect-[16/9] bg-project1 bg-accent-100"
+          onClick={() => setSelected(null)}
+        >
+          {selected !== null && projects[selected].title}
+        </Button>
+      </motion.div>
+    )
+  }
+
 }
