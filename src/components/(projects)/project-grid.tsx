@@ -51,7 +51,7 @@ export function ProjectGrid() {
         exit={{ opacity: 0 }}
       >
         {projects.map((project, index) => (
-            <Card key={index} project={project} index={index}/>
+          <Card key={index} project={project} index={index}/>
         ))}
       </motion.div>
     )
@@ -132,7 +132,7 @@ export function ProjectGrid() {
               (project.bgUrl.length ? "bg-error-100" : "bg-accent-100")
             )}
             onMouseOver={() => setHovering(true)}
-            onMouseOut={() => setTimeout(() => setHovering(false), 2000)}
+            onMouseOut={() => setHovering(false)}
           >
             <motion.div
               className="flex flex-col justify-center items-start w-full h-full overflow-hidden px-6"
@@ -171,15 +171,17 @@ export function ProjectGrid() {
                 </LayoutGroup>
               </div>
             </motion.div>
-            <Button
-              variant={"ghost"}
-              className="absolute p-2 right-0 top-0 z-10 w-fit h-fit hidden md:block"
-              onClick={() => {
-                setSelected(null);
-              }}
-            >
-              <X width={32} height={32}/>
-            </Button>
+            <div className="absolute w-fit h-fit p-2 hidden md:block right-0 top-0">
+              <Button
+                variant={"ghost"}
+                className="w-fit h-fit p-0 "
+                onClick={() => {
+                  setSelected(null);
+                }}
+              >
+                <X width={32} height={32}/>
+              </Button>
+            </div>
           </div>
           <div className="relative flex flex-col justify-start items-center w-full h-fit md:hidden">
             <h3 className="font-bold prose-display-xs">
@@ -195,15 +197,17 @@ export function ProjectGrid() {
             <p className="w-full text-left text-wrap prose-text-lg">
               {project.description}
             </p>
-            <Button
-              variant={"ghost"}
-              className="absolute px-2 py-0 right-0 top-0 z-10 w-fit h-fit md:hidden"
-              onClick={() => {
-                setSelected(null);
-              }}
-            >
-              <X width={32} height={32}/>
-            </Button>
+            <div className="absolute w-fit h-fit px-2 block md:hidden right-0 top-0">
+              <Button
+                variant={"ghost"}
+                className="p-0 w-fit h-fit"
+                onClick={() => {
+                  setSelected(null);
+                }}
+              >
+                <X width={32} height={32}/>
+              </Button>
+            </div>
           </div>
         </div>
       )
