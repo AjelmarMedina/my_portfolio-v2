@@ -125,55 +125,85 @@ export function ProjectGrid() {
       const [isHovering, setHovering] = useState(false);
 
       return (
-        <div
-          className="relative block w-full aspect-[16/9] bg-accent-100"
-          onMouseOver={() => setHovering(true)}
-          onMouseOut={() => setHovering(false)}
-        >
-          <motion.div
-            className="flex flex-col justify-center items-start w-full h-full overflow-hidden px-6"
-          >
-            <div className="flex flex-col justify-center items-start space-y-4 w-[30%] h-full overflow-visible">
-              <LayoutGroup>
-                <motion.h3
-                  className="font-bold prose-display-xs"
-                  layout
-                >
-                  {project.title}
-                </motion.h3>
-                <motion.div
-                  layout
-                  className="flex flex-row flex-wrap space-x-1 justify-start items-center w-full"
-                >
-                  {project.tags.map((tag, index) => (
-                    <Badge key={index}>
-                      {tag}
-                    </Badge>
-                  ))}
-                </motion.div>
-                <AnimatePresence>
-                  {isHovering && (<>
-                    <motion.p
-                      className="w-full text-left text-wrap prose-text-lg"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      layout
-                    >
-                      {project.description}
-                    </motion.p>
-                  </>)}
-                </AnimatePresence>
-              </LayoutGroup>
-            </div>
-          </motion.div>
+        <div className="flex-col justify-center items-center w-full h-fit space-y-6">
           <div
-            className="absolute p-2 right-0 top-0 z-10 w-fit h-fit cursor-pointer"
-            onClick={() => {
-              setSelected(null);
-            }}
+            className={cn(
+              "relative flex w-full aspect-[16/9] rounded-lg",
+              (project.bgUrl.length ? "bg-error-100" : "bg-accent-100")
+            )}
+            onMouseOver={() => setHovering(true)}
+            onMouseOut={() => setTimeout(() => setHovering(false), 2000)}
           >
-            <X width={32} height={32}/>
+            <motion.div
+              className="flex flex-col justify-center items-start w-full h-full overflow-hidden px-6"
+            >
+              <div className="flex-col justify-center items-start space-y-4 w-full sm:w-[30%] h-full overflow-visible hidden md:flex">
+                <LayoutGroup>
+                  <motion.h3
+                    className="font-bold prose-display-xs"
+                    layout
+                  >
+                    {project.title}
+                  </motion.h3>
+                  <motion.div
+                    layout
+                    className="flex flex-row flex-wrap space-x-1 justify-start items-center w-full"
+                  >
+                    {project.tags.map((tag, index) => (
+                      <Badge key={index}>
+                        {tag}
+                      </Badge>
+                    ))}
+                  </motion.div>
+                  <AnimatePresence>
+                    {isHovering && (<>
+                      <motion.p
+                        className="w-full text-left text-wrap prose-text-lg"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        layout
+                      >
+                        {project.description}
+                      </motion.p>
+                    </>)}
+                  </AnimatePresence>
+                </LayoutGroup>
+              </div>
+            </motion.div>
+            <Button
+              variant={"ghost"}
+              className="absolute p-2 right-0 top-0 z-10 w-fit h-fit hidden md:block"
+              onClick={() => {
+                setSelected(null);
+              }}
+            >
+              <X width={32} height={32}/>
+            </Button>
+          </div>
+          <div className="relative flex flex-col justify-start items-center w-full h-fit md:hidden">
+            <h3 className="font-bold prose-display-xs">
+              {project.title}
+            </h3>
+            <div className="flex flex-row flex-wrap space-x-1 justify-start items-center w-full">
+              {project.tags.map((tag, index) => (
+                <Badge key={index}>
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            <p className="w-full text-left text-wrap prose-text-lg">
+              {project.description}
+            </p>
+            <Button
+              variant={"ghost"}
+              className="absolute px-2 py-0 right-0 top-0 z-10 w-fit h-fit md:hidden"
+              onClick={() => {
+                setSelected(null);
+              }}
+            >
+              <X width={32} height={32}/>
+            </Button>
           </div>
         </div>
       )

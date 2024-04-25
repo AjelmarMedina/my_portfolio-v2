@@ -111,13 +111,13 @@ export const certificationsFb = [
 
 export const projects = [
   {
-    title: "Project 1",
+    title: "My Portfolio V2",
     tags: ["Web", "Dev", "Ajel", "Medina"],
     description: "Nostrud non irure quis voluptate aute velit nostrud fugiat ad occaecat.",
     bgUrl: "",
   },
   {
-    title: "Project 2",
+    title: "Meet Ajel",
     tags: ["Web", "Dev", "Medina"],
     description: "Laborum velit qui in adipisicing minim dolor amet.",
     bgUrl: "",
