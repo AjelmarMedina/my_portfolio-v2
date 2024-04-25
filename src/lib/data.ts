@@ -114,10 +114,10 @@ export const projects = [
     title: "My Portfolio V2",
     tags: ["Web", "Dev", "Ajel", "Medina"],
     description: "Nostrud non irure quis voluptate aute velit nostrud fugiat ad occaecat.",
-    bgUrl: "",
+    bgUrl: "my-portfolio-v2.png",
   },
   {
-    title: "Meet Ajel",
+    title: "Meet Ajel (Portfolio V1)",
     tags: ["Web", "Dev", "Medina"],
     description: "Laborum velit qui in adipisicing minim dolor amet.",
     bgUrl: "",

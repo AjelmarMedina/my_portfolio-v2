@@ -27,7 +27,7 @@ export function ProjectGrid() {
   return (
     <div
       id="project-grid"
-      className={cn("flex flex-row justify-center items-center w-full text-neutral-black px-4 pb-14 md:px-28 md:pb-24", (selected && "h-screen"))}
+      className={cn("flex flex-row justify-center items-center w-full text-neutral-black px-4 pb-14 md:px-28 md:pb-24", (selected ?? "h-screen"))}
     >
       <AnimatePresence mode="popLayout">
         {selected === null && (
@@ -64,7 +64,7 @@ export function ProjectGrid() {
 
       return (
         <Button
-          className="w-full aspect-[16/9] bg-project1 bg-accent-100"
+          className="w-full aspect-[16/9] bg-accent-100"
           onMouseOver={() => setHovering(true)}
           onMouseOut={() => setHovering(false)}
           onClick={() => {
@@ -127,17 +127,22 @@ export function ProjectGrid() {
       return (
         <div className="flex-col justify-center items-center w-full h-fit space-y-6">
           <div
+            style={(project.bgUrl.length ? {backgroundImage: `url('/projects/${project.bgUrl}`} : {})}
             className={cn(
-              "relative flex w-full aspect-[16/9] rounded-lg",
-              (project.bgUrl.length ? "bg-error-100" : "bg-accent-100")
+              "relative flex w-full aspect-[16/9] rounded-lg ",
+              (project.bgUrl.length ? "bg-cover text-neutral-white" : "bg-accent-100")
             )}
             onMouseOver={() => setHovering(true)}
             onMouseOut={() => setHovering(false)}
           >
             <motion.div
-              className="flex flex-col justify-center items-start w-full h-full overflow-hidden px-6"
+              className="flex flex-col justify-center items-start w-full h-full overflow-hidden"
             >
-              <div className="flex-col justify-center items-start space-y-4 w-full sm:w-[30%] h-full overflow-visible hidden md:flex">
+              <div className={cn(
+                  "flex-col justify-center items-start space-y-4 w-[33%] transition-all p-6 h-full overflow-visible hidden md:flex",
+                  (isHovering && "w-[50%] lg:w-[33%]"),
+                  (project.bgUrl.length && "bg-dark-gradient")
+                )}>
                 <LayoutGroup>
                   <motion.h3
                     className="font-bold prose-display-xs"
@@ -173,7 +178,9 @@ export function ProjectGrid() {
             </motion.div>
             <div className="absolute w-fit h-fit p-2 hidden md:block right-0 top-0">
               <Button
-                variant={"ghost"}
+                variant={"fill"}
+                fill={"light"}
+                stroke={"dark"}
                 className="w-fit h-fit p-0 "
                 onClick={() => {
                   setSelected(null);
