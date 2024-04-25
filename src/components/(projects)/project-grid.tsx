@@ -27,7 +27,7 @@ export function ProjectGrid() {
   return (
     <div
       id="project-grid"
-      className={cn("flex flex-row justify-center items-center w-full text-neutral-black px-4 pb-14 md:px-28 md:pb-24", (selected ?? "h-screen"))}
+      className={cn("flex flex-row justify-center items-center w-full text-neutral-black px-4 pb-14 md:px-28 md:pb-24", (selected !== null && "h-screen"))}
     >
       <AnimatePresence mode="popLayout">
         {selected === null && (
