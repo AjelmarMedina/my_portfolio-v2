@@ -64,7 +64,11 @@ export function ProjectGrid() {
 
       return (
         <Button
-          className="w-full aspect-[16/9] bg-accent-100"
+          style={(project.bgUrl.length ? {backgroundImage: `url('/projects/${project.bgUrl}`} : {})}
+          className={cn(
+            "w-full aspect-[16/9] bg-accent-50",
+            (project.bgUrl.length && "bg-cover text-neutral-white p-0")
+          )}
           onMouseOver={() => setHovering(true)}
           onMouseOut={() => setHovering(false)}
           onClick={() => {
@@ -73,10 +77,13 @@ export function ProjectGrid() {
           }}
         >
           <motion.div
-            className="flex flex-col justify-center items-center space-y-2 w-full h-full overflow-hidden"
+            className={cn(
+              "flex flex-col justify-center items-center space-y-2 w-full h-full overflow-hidden",
+              (project.bgUrl.length && "bg-neutral-black/50" )
+            )}
           >
             <LayoutGroup>
-              <motion.h3 layout>
+              <motion.h3 layout className="w-full text-wrap md:prose-display-xs">
                 {project.title}
               </motion.h3>
               <AnimatePresence>
