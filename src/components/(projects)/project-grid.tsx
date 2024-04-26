@@ -79,7 +79,7 @@ export function ProjectGrid() {
           <motion.div
             className={cn(
               "flex flex-col justify-center items-center space-y-2 w-full h-full overflow-hidden",
-              (project.bgUrl.length && "bg-neutral-black/50" )
+              (project.bgUrl.length && "bg-neutral-black/50 rounded-md" )
             )}
           >
             <LayoutGroup>
