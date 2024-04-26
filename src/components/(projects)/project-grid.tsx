@@ -136,7 +136,7 @@ export function ProjectGrid() {
           <div
             style={(project.bgUrl.length ? {backgroundImage: `url('/projects/${project.bgUrl}`} : {})}
             className={cn(
-              "relative flex w-full aspect-[16/9] rounded-lg ",
+              "relative flex w-full aspect-[16/9] rounded-lg",
               (project.bgUrl.length ? "bg-cover text-neutral-white" : "bg-accent-100")
             )}
             onMouseOver={() => setHovering(true)}
@@ -170,7 +170,7 @@ export function ProjectGrid() {
                   <AnimatePresence>
                     {isHovering && (<>
                       <motion.p
-                        className="w-full text-left text-wrap prose-text-lg"
+                        className="w-[80%] text-left text-wrap prose-text-md"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}

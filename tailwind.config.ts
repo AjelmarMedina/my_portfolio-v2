@@ -115,7 +115,7 @@ const config: Config = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-radial-md": "radial-gradient(circle at 0 0, #001833 30%, #004799 100%)",
         "project1": "url('/projects/my-portfolio-v2.png')",
-        "dark-gradient": "linear-gradient(to right, rgba(9, 12, 16, 0.5) 66%, transparent)"
+        "dark-gradient": "linear-gradient(to right, rgba(9, 12, 16, 0.5) 75%, transparent)"
       },
       typography: {
         'display-2xl': {
