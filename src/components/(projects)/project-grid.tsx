@@ -133,6 +133,7 @@ export function ProjectGrid() {
 
       return (
         <div className="flex-col justify-center items-center w-full h-fit space-y-6">
+          {/* Default */}
           <div
             style={(project.bgUrl.length ? {backgroundImage: `url('/projects/${project.bgUrl}`} : {})}
             className={cn(
@@ -197,11 +198,12 @@ export function ProjectGrid() {
               </Button>
             </div>
           </div>
+          {/* Narrow Viewport */}
           <div className="relative flex flex-col justify-start items-center w-full h-fit md:hidden">
-            <h3 className="font-bold prose-display-xs">
+            <h3 className="font-bold text-center prose-display-xs text-wrap px-8">
               {project.title}
             </h3>
-            <div className="flex flex-row flex-wrap space-x-1 justify-start items-center w-full">
+            <div className="flex flex-row flex-wrap space-x-1 justify-center items-center w-full">
               {project.tags.map((tag, index) => (
                 <Badge key={index}>
                   {tag}
