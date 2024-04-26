@@ -23,6 +23,11 @@ const buttonVariants = cva(
         link: "border-transparent bg-transparent underline-offset-4 hover:underline",
       },
       fill: {
+        light: [
+          "bg-neutral-white text-neutral-dark",
+          "hover:bg-neutral-100",
+          "transition-transform hover:-translate-y-1",
+        ],
         dark: [
           "bg-neutral-black text-neutral-white",
           "hover:bg-neutral-700",

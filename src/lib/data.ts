@@ -1,3 +1,5 @@
+export const fetcher = (url: string) => fetch(url).then(r => r.json());
+
 export const skillsFb = [
   {
     title: "Design System",
@@ -104,5 +106,68 @@ export const certificationsFb = [
   {
     title: "Academe & Education",
     description: "Consectetur nulla magna ullamco adipisicing magna aute enim et enim fugiat non dolor. Eiusmod non eiusmod voluptate pariatur eu aliqua et fugiat qui qui enim id. Et ullamco aliqua occaecat id.",
+  },
+]
+
+export const projects = [
+  {
+    title: "My Portfolio V2",
+    tags: ["Next.js", "Figma", "Vercel", "GSAP", "Framer Motion", "Prisma", "Blob"],
+    description: "This current websit is this project, built with the best technologies I could think of.",
+    bgUrl: "my-portfolio-v2.png",
+  },
+  {
+    title: "Meet Ajel (Portfolio V1)",
+    tags: ["HTML", "CSS", "JS", "Cloudfare Pages"],
+    description: "This was my very first portfolio built with vanilla tech.",
+    bgUrl: "meet-ajel.png",
+  },
+  {
+    title: "React Todo List",
+    tags: ["React.js", "Next.js"],
+    description: "A basic todo list that helped me conquer React Concepts.",
+    bgUrl: "react-todolist.png",
+  },
+  {
+    title: "CLI File Manager",
+    tags: ["Node.js", "CRUD" ],
+    description: "A Node.js Command-line interface to handle basic file operations.",
+    bgUrl: "node-file-manager.png",
+  },
+  {
+    title: "CLI Todo List",
+    tags: ["Express.js", "Node.js", "PostgreSQL"],
+    description: "A Todolist which interfaces with a backend database.",
+    bgUrl: "todo-cli.png",
+  },
+  {
+    title: "Full-stack Todo List",
+    tags: ["PostgreSQL",  "Express.js", "React.js", "Node.js", "Axios"],
+    description: "A full-on application built from the backend and database to the front-end.",
+    bgUrl: "pern-todolist.png",
+  },
+  {
+    title: "AgriConnect",
+    tags: ["Figma", "Design Systems"],
+    description: "An application design and design system created in Figma.",
+    bgUrl: "agriconnect.png",
+  },
+  {
+    title: "Next.js Dashboard",
+    tags: ["NextAuth", "Next.js", "PostgreSQL", "Vercel"],
+    description: "The final project following Next.js's course.",
+    bgUrl: "acme-dashboard.png",
+  },
+  {
+    title: "Codebase sim",
+    tags: ["Express.js", "React.js", "Git & Github"],
+    description: "Took on challenges from Codebase mentor that teaches how to be familiarized given a repository.",
+    bgUrl: "codementor.png",
+  },
+  {
+    title: "NPM Practice",
+    tags: ["NPM", "Git & Github", "momentjs", "modals", "HTML Forms", "Fetch API"],
+    description: "A compilation of technologies in a single repo that I used to practice on each API.",
+    bgUrl: "npm-prac.png",
   },
 ]
