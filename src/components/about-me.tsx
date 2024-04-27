@@ -10,7 +10,7 @@ export function AboutMe() {
       id="about-me"
       className={cn(
         "flex flex-col items-center w-full h-fit bg-neutral-50 overflow-clip",
-        (true && "max-h-0 animate-show-sections") // toggle hero intro for development
+        // (true && "max-h-0 animate-show-sections") // toggle hero intro for development
       )}
     >
       <Header

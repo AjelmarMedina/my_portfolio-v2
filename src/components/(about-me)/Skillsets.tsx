@@ -27,6 +27,7 @@ export function Skillsets() {
     gsap.from(content.current, {
       scrollTrigger: {
         trigger: content.current,
+        toggleActions: "play none none reset",
       },
       opacity: 0,
       x: -128,
@@ -35,6 +36,7 @@ export function Skillsets() {
     gsap.from(grid.current, {
       scrollTrigger: {
         trigger: grid.current,
+        toggleActions: "play none none reset"
       },
       opacity: 0,
       x: 128,
