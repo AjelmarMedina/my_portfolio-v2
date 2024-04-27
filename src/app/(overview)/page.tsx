@@ -1,6 +1,7 @@
+import { AboutMe } from "@/components/about-me";
+import { Cta } from "@/components/cta";
 import Hero from "@/components/hero";
 import { Projects } from "@/components/projects";
-import { AboutMe } from '../../components/about-me';
 
 // TODO: Customized border
 // TODO: min-heights for each subsection
@@ -13,6 +14,7 @@ export default function Page() {
       <Hero />
       <Projects />
       <AboutMe />
+      <Cta />
     </main>
   )
 }
