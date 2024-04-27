@@ -59,8 +59,8 @@ export function CtaForm() {
   return (
     <Form {...form}>
       <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-2 gap-4 max-w-full w-full h-fit">
-          <div className="grid gap-2">
+        <div className="flex flex-col justify-center items-center md:grid grid-cols-2 gap-4 max-w-full w-full h-fit">
+          <div className="w-full grid gap-2">
             <FormField
               control={form.control}
               name="name"
@@ -76,7 +76,7 @@ export function CtaForm() {
               )}
             />
           </div>
-          <div className="grid gap-2">
+          <div className="w-full grid gap-2">
             <FormField
               control={form.control}
               name="email"
