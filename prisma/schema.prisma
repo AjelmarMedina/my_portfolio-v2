@@ -9,10 +9,10 @@ datasource db {
 }
 
 model Customers {
-  id        String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name      String @db.VarChar(255)
-  email     String @db.VarChar(255)
-  image_url String @db.VarChar(255)
+  id          String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String @db.VarChar(255)
+  email       String @db.VarChar(255)
+  image_url   String @db.VarChar(255)
 
   @@map("customers")
 }
@@ -28,17 +28,17 @@ model Invoices {
 }
 
 model Revenue {
-  month   String @unique @db.VarChar(4)
-  revenue Int
+  month       String @unique @db.VarChar(4)
+  revenue     Int
 
   @@map("revenue")
 }
 
 model Users {
-  id       String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name     String @db.VarChar(255)
-  email    String @unique
-  password String
+  id          String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String @db.VarChar(255)
+  email       String @unique
+  password    String
 
   @@map("users")
 }
@@ -56,4 +56,11 @@ model Experiences {
 model Certifications {
   title       String @unique
   description String
+}
+
+model PortfolioContacts {
+  id          String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String
+  email       String
+  message     String
 }

@@ -39,9 +39,21 @@ export function CtaForm() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+    const data = JSON.stringify(values);
+    fetch("/contact", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then((response) => {
+      const result = response.json();
+      console.log("Success:", result);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    })
   }
 
   return (
