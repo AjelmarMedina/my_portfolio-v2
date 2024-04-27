@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 
 import { inter } from "@/components/ui/fonts";
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className)}>
         {children}
+        <Toaster />
         <Analytics />
       </body>
     </html>
