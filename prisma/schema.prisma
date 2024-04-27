@@ -60,6 +60,7 @@ model Certifications {
 
 model PortfolioContacts {
   id          String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  date        DateTime @db.Date @default(now())
   name        String
   email       String
   message     String

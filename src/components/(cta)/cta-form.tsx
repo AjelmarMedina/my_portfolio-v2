@@ -9,7 +9,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { toast } from "@/lib/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
@@ -29,6 +31,7 @@ const formSchema = z.object({
 })
 
 export function CtaForm() {
+  const [isSubmitted, setSubmitted] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,6 +42,7 @@ export function CtaForm() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    setSubmitted(true);
     const data = JSON.stringify(values);
     fetch("/contact", {
       method: "POST", // or 'PUT'
@@ -48,10 +52,16 @@ export function CtaForm() {
       body: JSON.stringify(data),
     })
     .then((response) => {
+      toast({
+        title: "Thank you for reaching out!"
+      })
       // const result = response.json();
       // console.log("Success:", result);
     })
     .catch((error) => {
+      toast({
+        title: "Something went wrong..."
+      })
       console.error("Error:", error);
     })
   }
@@ -113,7 +123,15 @@ export function CtaForm() {
             )}
           />
         </div>
-        <Button variant={"fill"} fill={"light"} outline={"dark"} type="submit" className="w-full">
+        <Button
+          variant={"fill"}
+          fill={"light"}
+          outline={"dark"}
+          type="submit"
+          className="w-full"
+          disabled={isSubmitted}
+          aria-disabled={isSubmitted}
+        >
           Submit
         </Button>
       </form>
