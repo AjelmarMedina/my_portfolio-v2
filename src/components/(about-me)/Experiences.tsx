@@ -27,6 +27,7 @@ export function Experiences() {
     gsap.from(content.current, {
       scrollTrigger: {
         trigger: content.current,
+        toggleActions: "play none none reset"
       },
       opacity: 0,
       x: 128,
@@ -35,6 +36,7 @@ export function Experiences() {
     gsap.from(grid.current, {
       scrollTrigger: {
         trigger: grid.current,
+        toggleActions: "play none none reset"
       },
       opacity: 0,
       x: -128,
@@ -108,7 +110,7 @@ export function Experiences() {
 
   return (
     <div
-      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-primary-100 text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:space-x-reverse md:px-28 md:py-24"
+      className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:space-x-reverse md:px-28 md:py-24"
     >
       <div className='w-full' ref={grid}>
         <Grid />
