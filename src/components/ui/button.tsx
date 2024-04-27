@@ -10,14 +10,15 @@ import { cn } from "@/lib/utils"
 // TODO: modify ghost states
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center whitespace-nowrap w-max h-min rounded-md text-5 leading-[18px] font-bold ring-offset-white transition-colors",  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2",
+    "inline-flex items-center justify-center whitespace-nowrap w-max h-min rounded-md text-5 leading-[18px] font-bold ring-offset-white transition-colors",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300"
   ],
   {
     variants: {
       variant: {
-        fill: "border-transparent",
+        fill: "",
         outline: "border-2 bg-transparent",
         ghost: "border-transparent bg-transparent",
         link: "border-transparent bg-transparent underline-offset-4 hover:underline",
@@ -42,12 +43,12 @@ const buttonVariants = cva(
       },
       outline: {
         dark: [
-          "border-neutral-black text-neutral-black hover:border-neutral-700 hover:text-neutral-700",
+          "border-2 border-neutral-black text-neutral-black hover:border-neutral-700 hover:text-neutral-700",
           "hover:border-neutral-700 hover:text-neutral-700",
           "transition-transform hover:-translate-y-1",
         ],
         accent: [
-          "border-accent-accent text-accent-accent",
+          "border-2 border-accent-accent text-accent-accent",
           "hover:border-accent-400 hover:text-accent-400",
           "transition-transform hover:-translate-y-1",
         ],
@@ -67,7 +68,7 @@ const buttonVariants = cva(
     compoundVariants: [
       {
         variant: "fill",
-        fill: ["accent", "dark", "destructive"],
+        fill: ["light", "accent", "dark", "destructive"],
         size: ["sm", "md", "lg"],
       },
       {
