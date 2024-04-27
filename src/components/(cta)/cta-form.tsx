@@ -1,35 +1,110 @@
 'use client';
 
-import { Label } from "@radix-ui/react-label";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
+
+const formSchema = z.object({
+  name: z.string()
+    .min(1, { message: "Enter your name, please." })
+    .max(256),
+  email: z.string()
+    .max(320)
+    .regex(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm, { message: "Enter a valid Email Address Please..." }),
+  message: z.string()
+    .max(1024),
+})
+
 export function CtaForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    }
+  })
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values)
+  }
+
   return (
-    <div className="grid gap-4">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="grid gap-2">
-          <Label htmlFor="first-name">Your name</Label>
-          <Input id="name" placeholder="Max" required />
+    <Form {...form}>
+      <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="grid grid-cols-2 gap-4 max-w-full w-full h-fit">
+          <div className="grid gap-2">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({field}) => (
+                <FormItem>
+                  <FormLabel>Your name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Max" maxLength={256} {...field} />
+                  </FormControl>
+                  <FormDescription />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="grid gap-2">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({field}) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="m@example.com"
+                      maxLength={320}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="m@example.com"
-            required
+          <FormField
+            control={form.control}
+            name="message"
+            render={({field}) => (
+              <FormItem>
+                <FormLabel>What would you like to talk about?</FormLabel>
+                <FormControl>
+                  <Textarea className="h-24" placeholder="I was wondering if..." maxLength={1024} {...field} />
+                </FormControl>
+                <FormDescription />
+                <FormMessage />
+              </FormItem>
+            )}
           />
         </div>
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="message">What would you like to talk about?</Label>
-        <Textarea id="message" name="message" className="h-24"/>
-      </div>
-      <Button variant={"fill"} fill={"light"} outline={"dark"} type="submit" className="w-full">
-        Submit
-      </Button>
-    </div>
+        <Button variant={"fill"} fill={"light"} outline={"dark"} type="submit" className="w-full">
+          Submit
+        </Button>
+      </form>
+    </Form>
   )
 }

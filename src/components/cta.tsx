@@ -11,7 +11,7 @@ import { CtaForm } from "./(cta)/cta-form";
 
 export function Cta() {
   return (
-    <div id="cta" className="flex flex-col justify-center items center w-full md:h-screen px-4 py-14 md:py-24 md:px-28 bg-neutral-50">
+    <div id="cta" className="flex flex-col justify-center items center w-full md:h-screen px-4 py-14 md:py-24 md:px-28 bg-primary-100">
       <Card className="mx-auto max-w-xl shadow-2xl">
         <CardHeader className="text-center">
           <CardTitle className="prose-display-xs">Get in Contact!</CardTitle>
@@ -21,7 +21,6 @@ export function Cta() {
         </CardHeader>
         <CardContent>
           <CtaForm />
-          {/* Other Contacts */}
           <div className="flex flex-col justify-center items-center mt-4 text-center prose-text-sm">
             <p>Want to get in contact in other ways?</p>
             <ContactMethods />
