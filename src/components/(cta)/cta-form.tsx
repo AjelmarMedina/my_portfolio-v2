@@ -48,8 +48,8 @@ export function CtaForm() {
       body: JSON.stringify(data),
     })
     .then((response) => {
-      const result = response.json();
-      console.log("Success:", result);
+      // const result = response.json();
+      // console.log("Success:", result);
     })
     .catch((error) => {
       console.error("Error:", error);
