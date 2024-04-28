@@ -3,23 +3,25 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
-import { Button } from '../ui/button';
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-export function HeroButtonSet() {
+export function ButtonSet() {
 
   const { contextSafe } = useGSAP();
 
   return (
-    <div className="z-20 flex flex-row items-center px-0 space-x-4 md:opacity-0 w-min sm:px-4 md:max-h-0 md:animate-fade-in--buttons">
+    <div className="flex flex-row items-center px-0 space-x-4 w-min ">
       <Button
         fill={"accent"}
         size={"lg"}
         onClick={contextSafe(() => {
           gsap.to(window, {
             scrollTo: "#cta",
-            duration: 2,
+            duration: 1,
           })
         })}
       >
@@ -27,16 +29,13 @@ export function HeroButtonSet() {
       </Button>
       <Button
         variant={"outline"}
-        outline={"accent"}
+        outline={"dark"}
         size={"lg"}
-        onClick={contextSafe(() => {
-          gsap.to(window, {
-            scrollTo: "#about-me",
-            duration: 2,
-          })
-        })}
+        asChild
       >
-        About me...
+        <Link href={"https://www.linkedin.com/in/ajelmar-medina/"} target="_blank">
+          About me <ArrowRight width={16} height={16} className="ml-2" />
+        </Link>
       </Button>
     </div>
   )
