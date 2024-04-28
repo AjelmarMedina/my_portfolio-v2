@@ -7,8 +7,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
-import { Button, ButtonSet } from '../ui/button';
+import { Button } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
+import { ButtonSet } from './button-set';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 

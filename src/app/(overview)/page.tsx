@@ -4,7 +4,6 @@ import Hero from "@/components/hero";
 import { Projects } from "@/components/projects";
 
 // TODO: Customized border
-// TODO: min-heights for each subsection
 // TODO: Content Backgrounds + Grid Backgrounds
 // TODO: Animate transition state change
 

@@ -6,8 +6,9 @@ import { useGSAP } from "@gsap/react";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollToPlugin);
 export function ProjectGrid() {
   const [selected, setSelected] = useState<number | null>(null);
   const { contextSafe } = useGSAP();
+  const projectGrid = useRef(null);
 
   const scrollIntoView = contextSafe(() => {
     gsap.to(window, {
@@ -28,6 +30,7 @@ export function ProjectGrid() {
     <div
       id="project-grid"
       className={cn("flex flex-row justify-center items-center w-full text-neutral-black px-4 pb-14 md:px-28 md:pb-24", (selected !== null && "h-screen"))}
+      ref={projectGrid}
     >
       <AnimatePresence mode="popLayout">
         {selected === null && (
@@ -74,6 +77,7 @@ export function ProjectGrid() {
           onClick={() => {
             setSelected(index);
             scrollIntoView();
+            ScrollTrigger.refresh(true);
           }}
         >
           <motion.div
@@ -137,7 +141,7 @@ export function ProjectGrid() {
           <div
             style={(project.bgUrl.length ? {backgroundImage: `url('/projects/${project.bgUrl}`} : {})}
             className={cn(
-              "relative flex w-full aspect-[16/9] rounded-lg",
+              "relative flex w-full aspect-[16/9] rounded-lg overflow-hidden",
               (project.bgUrl.length ? "bg-cover text-neutral-white" : "bg-accent-100")
             )}
             onMouseOver={() => setHovering(true)}
@@ -192,6 +196,7 @@ export function ProjectGrid() {
                 className="w-fit h-fit p-0 "
                 onClick={() => {
                   setSelected(null);
+                  ScrollTrigger.refresh(true);
                 }}
               >
                 <X width={32} height={32}/>
@@ -219,6 +224,7 @@ export function ProjectGrid() {
                 className="p-0 w-fit h-fit"
                 onClick={() => {
                   setSelected(null);
+                  ScrollTrigger.refresh(true);
                 }}
               >
                 <X width={32} height={32}/>
