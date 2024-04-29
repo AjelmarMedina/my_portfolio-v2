@@ -53,9 +53,10 @@ export function Skillsets() {
         {skills.map((skill, index) => (
           <div
             key={index}
+            style={{ backgroundImage: isLoading ? "" : `url('/blobFb/${skill.bgUrl}')` }}
             className={cn(
-              "flex flex-col justify-center items-center aspect-1 h-full w-full",
-              "p-2 outline outline-[4px] rounded-lg outline-blue_Gray-300",
+              "aspect-1 h-full w-full",
+              "outline outline-[4px] rounded-lg outline-blue_Gray-300 bg-[length:80%] bg-no-repeat bg-center",
               "font-bold prose-text-md text-neutral-400 text-center",
               "select-none hover:cursor-pointer",
               "transition-all",
@@ -64,7 +65,13 @@ export function Skillsets() {
             onClick={() => setSelected(index)}
           >
             {!isLoading
-              ? skill.title
+              ? (
+                <div
+                  className="w-full h-full flex flex-col justify-center items-center p-2 rounded-lg bg-neutral-50/80"
+                >
+                  {skill.title}
+                </div>
+              )
               : (<Skeleton className='w-full h-4' />)}
           </div>
         ))}
