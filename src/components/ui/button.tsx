@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center whitespace-nowrap w-max h-min rounded-md text-5 leading-[18px] font-bold ring-offset-white transition-colors",
+    "transition-transform hover:-translate-y-1",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300"
@@ -25,17 +26,14 @@ const buttonVariants = cva(
         light: [
           "bg-neutral-white text-neutral-dark",
           "hover:bg-neutral-100",
-          "transition-transform hover:-translate-y-1",
         ],
         dark: [
           "bg-neutral-black text-neutral-white",
           "hover:bg-neutral-700",
-          "transition-transform hover:-translate-y-1",
         ],
         accent: [
           "bg-accent-accent text-neutral-black",
           "hover:bg-accent-400",
-          "transition-transform hover:-translate-y-1",
         ],
         destructive: "bg-error-500 text-neutral-white",
       },
@@ -43,12 +41,10 @@ const buttonVariants = cva(
         dark: [
           "border-2 border-neutral-black text-neutral-black hover:border-neutral-700 hover:text-neutral-700",
           "hover:border-neutral-700 hover:text-neutral-700",
-          "transition-transform hover:-translate-y-1",
         ],
         accent: [
           "border-2 border-accent-accent text-accent-accent",
           "hover:border-accent-400 hover:text-accent-400",
-          "transition-transform hover:-translate-y-1",
         ],
         destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },

@@ -53,9 +53,13 @@ export function Skillsets() {
         {skills.map((skill, index) => (
           <div
             key={index}
+            style={{ backgroundImage: isLoading 
+              ? ""
+              : `url('https://ufiaijqlzdh3kwxq.public.blob.vercel-storage.com/my-portfolio-v2/skillset/${skill.bgUrl}')`
+            }}
             className={cn(
-              "flex flex-col justify-center items-center aspect-1 h-full w-full",
-              "p-2 outline outline-[4px] rounded-lg outline-blue_Gray-300",
+              "aspect-1 h-full w-full",
+              "outline outline-[4px] rounded-lg outline-blue_Gray-300 bg-[length:80%] bg-no-repeat bg-center",
               "font-bold prose-text-md text-neutral-400 text-center",
               "select-none hover:cursor-pointer",
               "transition-all",
@@ -63,9 +67,14 @@ export function Skillsets() {
             )}
             onClick={() => setSelected(index)}
           >
-            {!isLoading
-              ? skill.title
-              : (<Skeleton className='w-full h-4' />)}
+            <div
+              className="w-full h-full flex flex-col justify-center items-center p-2 rounded-lg bg-neutral-50/80"
+            >
+              {!isLoading
+                ? skill.title
+                : (<Skeleton className='w-full h-4' />
+              )}
+            </div>
           </div>
         ))}
       </div>
@@ -114,28 +123,36 @@ export function Skillsets() {
       className="flex flex-col justify-between items-center w-full h-fit px-4 py-14 bg-neutral-white text-neutral-black lg:grid lg:grid-cols-2 md:gap-[72px] md:px-28 md:py-24"
     >
       <div
-        className="flex flex-col justify-center items-center space-y-10 w-fit lg:min-h-[520px] lg:items-start"
+        style={{ backgroundImage: isLoading 
+          ? ""
+          : `url('https://ufiaijqlzdh3kwxq.public.blob.vercel-storage.com/my-portfolio-v2/skillset/${skills[selected].bgUrl}')` 
+        }}
+        className="flex flex-col justify-center items-center w-fit lg:min-h-[520px] lg:items-start bg-contain lg:bg-[length:80%] bg-center bg-no-repeat"
         ref={content}
       >
-        <div className="w-full">
-          <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
-            Skillset {isLoading}
-          </h1>
-          <Subheading />
-        </div>
-        {isLoading && (
-          <div className='flex flex-col w-full h-fit space-y-2'>
-            <Skeleton className='w-full h-4 md:h-5' />
-            <Skeleton className='w-full h-4 md:h-5' />
-            <Skeleton className='w-12 h-4 md:h-5' />
+        <div className="w-full h-full lg:min-h-[520px] bg-neutral-50/90">
+          <div className="flex flex-col justify-center items-center lg:items-start space-y-10 w-full">
+            <div className="w-full">
+              <h1 className="min-w-full font-bold prose-display-md text-center md:prose-display-lg lg:text-start">
+                Skillset {isLoading}
+              </h1>
+              <Subheading />
+            </div>
+            {isLoading && (
+              <div className='flex flex-col w-full h-fit space-y-2'>
+                <Skeleton className='w-full h-4 md:h-5' />
+                <Skeleton className='w-full h-4 md:h-5' />
+                <Skeleton className='w-12 h-4 md:h-5' />
+              </div>
+            )}
+            {data && (
+              <p className="prose-text-md md:prose-text-xl">
+                {skills[selected].description}
+              </p>
+            )}
+            <ButtonSet />
           </div>
-        )}
-        {data && (
-          <p className="prose-text-md md:prose-text-xl">
-            {skills[selected].description}
-          </p>
-        )}
-        <ButtonSet />
+        </div>
       </div>
       <div className='w-full' ref={grid}>
         <Grid />

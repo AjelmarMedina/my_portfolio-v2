@@ -46,6 +46,7 @@ model Users {
 model Skills {
   title       String @unique
   description String
+  bgUrl       String @default("")
 }
 
 model Experiences {
