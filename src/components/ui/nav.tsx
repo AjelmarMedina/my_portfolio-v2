@@ -1,9 +1,12 @@
 'use client';
 
 import { cn } from "@/lib/utils";
+import { useGSAP } from "@gsap/react";
 import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from "framer-motion";
+import gsap from "gsap";
 import Link from "next/link";
 import { useEffect } from "react";
+import { Button } from "./button";
 import { zillaSlab } from "./fonts";
 
 let clamp = (number: number, min: number, max: number) =>
@@ -32,6 +35,7 @@ function useBoundedScroll(threshold: number) {
 }
 
 export function Navbar() {
+  const { contextSafe } = useGSAP();
   let { scrollYBoundedProgress } = useBoundedScroll(400);
   let scrollYBoundedProgressDelayed = useTransform(
     scrollYBoundedProgress,
@@ -58,7 +62,7 @@ export function Navbar() {
       }}
       className="fixed inset-x-0 flex h-16 shadow-2xl backdrop-blur-md z-50"
     >
-      <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-8">
+      <div className="mx-auto flex w-full items-center justify-between px-4 md:px-20">
         <motion.div
           style={{
             scale: useTransform(
@@ -93,11 +97,41 @@ export function Navbar() {
               [1, 0]
             ),
           }}
-          className="flex space-x-4 text-sm font-medium text-neutral-white"
+          className="flex space-x-4 text-sm font-medium text-neutral-100"
         >
-          <a href="#projects">Projects</a>
-          <a href="#about-me">About Me</a>
-          <a href="#cta">Contact</a>
+          <Button
+            variant={"ghost"}
+            onClick={contextSafe(() => {
+              gsap.to(window, {
+              scrollTo: "#projects",
+              duration: 1,
+          })
+            })}
+          >
+            Projects
+          </Button>
+          <Button
+            variant={"ghost"}
+            onClick={contextSafe(() => {
+              gsap.to(window, {
+              scrollTo: "#about-me",
+              duration: 1,
+          })
+            })}
+          >
+            About Me
+          </Button>
+          <Button
+            variant={"ghost"}
+            onClick={contextSafe(() => {
+              gsap.to(window, {
+              scrollTo: "#cta",
+              duration: 1,
+          })
+            })}
+          >
+            Contact
+          </Button>
         </motion.nav>
       </div>
     </motion.header>
