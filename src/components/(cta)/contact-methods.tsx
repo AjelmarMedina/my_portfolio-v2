@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 
 export function ContactMethods() {
   return (
-    <div className="w-fit">
+    <div className="flex flex-row justify-between md:justify-center items-center w-full">
       <TooltipProvider>
         <Tooltip>
           <TooltipContent>
@@ -25,6 +25,7 @@ export function ContactMethods() {
           <TooltipTrigger asChild>
             <Button
               variant={"ghost"}
+              className="px-2 md:px-5"
               onClick={() => {
                 navigator.clipboard.writeText("ajelmarmedina@gmail.com")
                 toast({
@@ -45,7 +46,7 @@ export function ContactMethods() {
             </p>
           </TooltipContent>
           <TooltipTrigger asChild>
-            <Button variant={"ghost"} asChild>
+            <Button variant={"ghost"} className="px-2 md:px-5" asChild>
               <Link href={"https://github.com/AjelmarMedina"} target="_blank">
                 <GitHubLogoIcon width={24} height={24} />
               </Link>
@@ -60,7 +61,7 @@ export function ContactMethods() {
             </p>
           </TooltipContent>
           <TooltipTrigger asChild>
-            <Button variant={"ghost"} asChild>
+            <Button variant={"ghost"} className="px-2 md:px-5" asChild>
               <Link href={"https://www.linkedin.com/in/ajelmar-medina/"} target="_blank">
                 <LinkedInLogoIcon width={24} height={24} />
               </Link>
@@ -75,7 +76,7 @@ export function ContactMethods() {
             </p>
           </TooltipContent>
           <TooltipTrigger asChild>
-            <Button variant={"ghost"} asChild>
+            <Button variant={"ghost"} className="px-2 md:px-5" asChild>
               <Link href={"https://twitter.com/AjelMedina"} target="_blank">
                 <TwitterLogoIcon width={24} height={24} />
               </Link>
@@ -90,7 +91,7 @@ export function ContactMethods() {
             </p>
           </TooltipContent>
           <TooltipTrigger asChild>
-            <Button variant={"ghost"} asChild>
+            <Button variant={"ghost"} className="px-2 md:px-5" asChild>
               <Link href={"https://calendly.com/ajelmarmedina/contact"} target="_blank">
                 <CalendarCheck width={24} height={24} />
               </Link>
