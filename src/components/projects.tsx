@@ -5,6 +5,7 @@ import { Header } from "./ui/header-section";
 export function Projects() {
   return (
     <div
+      id="projects"
       className={cn(
         "flex flex-col items-center w-full h-fit bg-primary-100 overflow-clip",
         // (true && "max-h-0 animate-show-sections") // toggle hero intro for development
