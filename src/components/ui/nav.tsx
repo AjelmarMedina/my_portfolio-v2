@@ -158,7 +158,10 @@ export function Navbar() {
       <motion.nav
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: menuOpen ? "100vh" : 0, opacity: menuOpen ? 1 : 0 }}
-        className="prose-display-sm fixed bg-primary-primary w-screen z-0 pt-24 flex flex-col justify-start items-center space-y-8"
+        className={cn(
+          "prose-display-sm fixed w-screen z-0 pt-24 bg-primary-primary flex-col justify-start items-center space-y-8",
+          (menuOpen ? "flex opacity-100" : "hidden opacity-0")
+        )}
       >
         <Button
           variant={"ghost"}
