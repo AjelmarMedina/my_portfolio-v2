@@ -2,10 +2,11 @@
 
 import { cn } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
-import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from 'framer-motion';
 import gsap from "gsap";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./button";
 import { zillaSlab } from "./fonts";
 
@@ -38,6 +39,7 @@ function useBoundedScroll(threshold: number) {
 
 export function Navbar() {
   const { contextSafe } = useGSAP();
+  const [menuOpen, setMenuOpen] = useState(false);
   let { scrollYBoundedProgress } = useBoundedScroll(400);
   let scrollYBoundedProgressDelayed = useTransform(
     scrollYBoundedProgress,
@@ -64,7 +66,7 @@ export function Navbar() {
       }}
       className="fixed inset-x-0 flex h-16 shadow-2xl backdrop-blur-md z-50"
     >
-      <div className="mx-auto flex w-full items-center justify-between px-4 md:px-20">
+      <div className="mx-auto flex w-full items-center justify-between px-4 md:px-20 z-10">
         <motion.div
           style={{
             scale: useTransform(
@@ -99,43 +101,105 @@ export function Navbar() {
               [1, 0]
             ),
           }}
-          className="flex space-x-4 text-sm font-medium text-neutral-100"
+          className="flex flex-row justify-end text-sm font-medium text-neutral-100"
         >
-          <Button
-            variant={"ghost"}
-            onClick={contextSafe(() => {
-              gsap.to(window, {
-              scrollTo: "#projects",
-              duration: 1,
-          })
-            })}
+          <div className="w-full h-full sm:flex space-x-4 hidden">
+            <Button
+              variant={"ghost"}
+              onClick={contextSafe(() => {
+                gsap.to(window, {
+                scrollTo: "#projects",
+                duration: 1,
+            })
+              })}
+            >
+              Projects
+            </Button>
+            <Button
+              variant={"ghost"}
+              onClick={contextSafe(() => {
+                gsap.to(window, {
+                scrollTo: "#about-me",
+                duration: 1,
+            })
+              })}
+            >
+              About Me
+            </Button>
+            <Button
+              variant={"ghost"}
+              onClick={contextSafe(() => {
+                gsap.to(window, {
+                scrollTo: "#cta",
+                duration: 1,
+            })
+              })}
+            >
+              Contact
+            </Button>
+          </div>
+          <motion.div
+            className="w-fit h-fit"
+            animate={{ rotate: menuOpen ? 90 : 0}}
           >
-            Projects
-          </Button>
-          <Button
-            variant={"ghost"}
-            onClick={contextSafe(() => {
-              gsap.to(window, {
-              scrollTo: "#about-me",
-              duration: 1,
-          })
-            })}
-          >
-            About Me
-          </Button>
-          <Button
-            variant={"ghost"}
-            onClick={contextSafe(() => {
-              gsap.to(window, {
-              scrollTo: "#cta",
-              duration: 1,
-          })
-            })}
-          >
-            Contact
-          </Button>
+            <Button
+              variant={"ghost"}
+              stroke={"light"}
+              className="flex sm:hidden p-0 h-full aspect-1"
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+              }}
+            >
+              <Menu strokeWidth={3} />
+            </Button>
+          </motion.div>
         </motion.nav>
       </div>
+      <motion.nav
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: menuOpen ? "100vh" : 0, opacity: menuOpen ? 1 : 0 }}
+        className="prose-display-sm fixed bg-primary-primary w-screen z-0 pt-24 flex flex-col justify-start items-center space-y-8"
+      >
+        <Button
+          variant={"ghost"}
+          className="p-0 h-fit w-full leading-[38px]"
+          onClick={contextSafe(() => {
+            setMenuOpen(false);
+            gsap.to(window, {
+            scrollTo: "#projects",
+            duration: 1,
+        })
+          })}
+        >
+          Projects
+        </Button>
+        <Button
+          variant={"ghost"}
+          className="p-0 h-fit w-full leading-[38px]"
+          onClick={contextSafe(() => {
+            setMenuOpen(false);
+            gsap.to(window, {
+            scrollTo: "#about-me",
+            duration: 1,
+        })
+          })}
+        >
+          About Me
+        </Button>
+        <Button
+          variant={"ghost"}
+          className="p-0 h-fit w-full leading-[38px]"
+          onClick={contextSafe(() => {
+            setMenuOpen(false);
+            gsap.to(window, {
+            scrollTo: "#cta",
+            duration: 1,
+        })
+          })}
+        >
+          Contact
+        </Button>
+      </motion.nav>
     </motion.header>
   )
 }
