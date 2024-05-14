@@ -13,6 +13,8 @@ import { ButtonSet } from './button-set';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+// TODO: Content Backgrounds + Grid Backgrounds
+
 export function Certifications() {
   const [selected, setSelected] = useState(0);
   const [certifications, setCertifications] = useState(certificationsFb);

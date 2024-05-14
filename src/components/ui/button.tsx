@@ -49,6 +49,7 @@ const buttonVariants = cva(
         destructive: "bg-red-500 text-neutral-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"
       },
       stroke: {
+        light: "text-neutral-white",
         dark: "text-neutral-black",
         accent: "text-accent-300",
         destructive: "text-error-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90"

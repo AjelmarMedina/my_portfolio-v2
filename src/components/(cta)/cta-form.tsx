@@ -68,8 +68,8 @@ export function CtaForm() {
 
   return (
     <Form {...form}>
-      <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col justify-center items-center md:grid grid-cols-2 gap-4 max-w-full w-full h-fit">
+      <form className="grid gap-2 md:gap-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="flex flex-col justify-center items-center md:grid grid-cols-2 gap-2 md:gap-4 max-w-full w-full h-fit">
           <div className="w-full grid gap-2">
             <FormField
               control={form.control}

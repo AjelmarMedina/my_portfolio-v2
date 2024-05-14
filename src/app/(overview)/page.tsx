@@ -4,8 +4,7 @@ import Hero from "@/components/hero";
 import { Projects } from "@/components/projects";
 
 // TODO: Customized border
-// TODO: Content Backgrounds + Grid Backgrounds
-// TODO: Animate transition state change
+// TODO: Footer
 
 export default function Page() {
   return (
