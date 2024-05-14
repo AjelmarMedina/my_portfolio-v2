@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { Button } from "./button";
 import { zillaSlab } from "./fonts";
 
+// TODO: Mobile fix
+
 let clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);
 

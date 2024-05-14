@@ -4,6 +4,9 @@ import { Experiences } from "./(about-me)/Experiences";
 import { Skillsets } from "./(about-me)/Skillsets";
 import { Header } from "./ui/header-section";
 
+// TODO: GIFs
+// TODO: Animate transition state change for AboutMe
+
 export function AboutMe() {
   return (
     <div

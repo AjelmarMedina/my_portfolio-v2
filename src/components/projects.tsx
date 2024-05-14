@@ -2,6 +2,13 @@ import { cn } from "@/lib/utils";
 import { ProjectGrid } from './(projects)/project-grid';
 import { Header } from "./ui/header-section";
 
+// TODO: Carousel
+// - Map all projects. If item is equal to index, display.
+// - State of action, default is "next".
+// - Framer Motion Variants of prevEnter (initial x: -256) and nextEnter (initial x: 256). exitLeft (exit x: -256) exitRight (exit x: -256)
+// - If action is "next". initial is "nextEnter", exit is "exitLeft". Else initial is "prevEnter", exit is "exitRight"
+// - On carousel action: update action to "next" or "prev". Then update index
+
 export function Projects() {
   return (
     <div
