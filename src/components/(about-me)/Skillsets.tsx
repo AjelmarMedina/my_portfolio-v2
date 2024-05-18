@@ -32,7 +32,6 @@ export function Skillsets() {
         scrollTrigger: {
           trigger: content.current,
           toggleActions: "play none none reset",
-          markers: true,
         },
         opacity: 0,
         x: -128,
