@@ -6,6 +6,7 @@ import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } fr
 import gsap from "gsap";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "./button";
 import { zillaSlab } from "./fonts";
@@ -38,8 +39,10 @@ function useBoundedScroll(threshold: number) {
 }
 
 export function Navbar() {
-  const { contextSafe } = useGSAP();
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  const { contextSafe } = useGSAP();
   let { scrollYBoundedProgress } = useBoundedScroll(400);
   let scrollYBoundedProgressDelayed = useTransform(
     scrollYBoundedProgress,
@@ -108,9 +111,10 @@ export function Navbar() {
               variant={"ghost"}
               onClick={contextSafe(() => {
                 gsap.to(window, {
-                scrollTo: "#projects",
-                duration: 1,
-            })
+                  scrollTo: "#projects",
+                  duration: 1,
+                  onComplete: () => replace(`${pathname}#projects`),
+                })
               })}
             >
               Projects
@@ -119,9 +123,10 @@ export function Navbar() {
               variant={"ghost"}
               onClick={contextSafe(() => {
                 gsap.to(window, {
-                scrollTo: "#about-me",
-                duration: 1,
-            })
+                  scrollTo: "#about-me",
+                  duration: 1,
+                  onComplete: () => replace(`${pathname}#about-me`),
+                })
               })}
             >
               About Me
@@ -130,9 +135,10 @@ export function Navbar() {
               variant={"ghost"}
               onClick={contextSafe(() => {
                 gsap.to(window, {
-                scrollTo: "#cta",
-                duration: 1,
-            })
+                  scrollTo: "#cta",
+                  duration: 1,
+                  onComplete: () => replace(`${pathname}#cta`),
+                })
               })}
             >
               Contact
@@ -165,39 +171,45 @@ export function Navbar() {
       >
         <Button
           variant={"ghost"}
+          stroke={"light"}
           className="p-0 h-fit w-full leading-[38px]"
           onClick={contextSafe(() => {
             setMenuOpen(false);
+            replace(`${pathname}#projects`);
             gsap.to(window, {
-            scrollTo: "#projects",
-            duration: 1,
-        })
+              scrollTo: "#projects",
+              duration: 1,
+            })
           })}
         >
           Projects
         </Button>
         <Button
           variant={"ghost"}
+          stroke={"light"}
           className="p-0 h-fit w-full leading-[38px]"
           onClick={contextSafe(() => {
             setMenuOpen(false);
+            replace(`${pathname}#about-me`);
             gsap.to(window, {
-            scrollTo: "#about-me",
-            duration: 1,
-        })
+              scrollTo: "#about-me",
+              duration: 1,
+            })
           })}
         >
           About Me
         </Button>
         <Button
           variant={"ghost"}
+          stroke={"light"}
           className="p-0 h-fit w-full leading-[38px]"
           onClick={contextSafe(() => {
             setMenuOpen(false);
+            replace(`${pathname}#cta`);
             gsap.to(window, {
-            scrollTo: "#cta",
-            duration: 1,
-        })
+              scrollTo: "#cta",
+              duration: 1,
+            })
           })}
         >
           Contact

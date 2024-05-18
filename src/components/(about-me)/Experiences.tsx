@@ -27,23 +27,27 @@ export function Experiences() {
   }, [data, isLoading]);
 
   useGSAP(() => {
-    gsap.from(content.current, {
-      scrollTrigger: {
-        trigger: content.current,
-        toggleActions: "play none none reset"
-      },
-      opacity: 0,
-      x: 128,
-      duration: 1.5,
-    })
-    gsap.from(grid.current, {
-      scrollTrigger: {
-        trigger: grid.current,
-        toggleActions: "play none none reset"
-      },
-      opacity: 0,
-      x: -128,
-      duration: 1.5,
+    let mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(content.current, {
+        scrollTrigger: {
+          trigger: content.current,
+          toggleActions: "play none none reset",
+        },
+        opacity: 0,
+        x: 128,
+        duration: 1.5,
+      })
+      gsap.from(grid.current, {
+        scrollTrigger: {
+          trigger: grid.current,
+          toggleActions: "play none none reset"
+        },
+        opacity: 0,
+        x: -128,
+        duration: 1.5,
+      })
     })
   })
 
