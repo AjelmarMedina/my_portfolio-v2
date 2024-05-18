@@ -171,6 +171,7 @@ export function Navbar() {
       >
         <Button
           variant={"ghost"}
+          stroke={"light"}
           className="p-0 h-fit w-full leading-[38px]"
           onClick={contextSafe(() => {
             setMenuOpen(false);
@@ -185,6 +186,7 @@ export function Navbar() {
         </Button>
         <Button
           variant={"ghost"}
+          stroke={"light"}
           className="p-0 h-fit w-full leading-[38px]"
           onClick={contextSafe(() => {
             setMenuOpen(false);
@@ -199,6 +201,7 @@ export function Navbar() {
         </Button>
         <Button
           variant={"ghost"}
+          stroke={"light"}
           className="p-0 h-fit w-full leading-[38px]"
           onClick={contextSafe(() => {
             setMenuOpen(false);

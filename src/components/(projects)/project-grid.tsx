@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export function ProjectGrid() {
   const [selected, setSelected] = useState<number | null>(null);
-  const [carouselAction, setCarouselAction] = useState<"next" | "prev">("next");
+  const [carouselAction, setCarouselAction] = useState<"next" | "prev" | "init">("init");
   const { contextSafe } = useGSAP();
   const projectGrid = useRef(null);
   const carouselItem = useRef(null)
@@ -25,6 +25,7 @@ export function ProjectGrid() {
     gsap.to(window, {
       scrollTo: "#project-grid",
       duration: 0.5,
+      onComplete: ScrollTrigger.refresh,
     })
   })
 
@@ -45,13 +46,13 @@ export function ProjectGrid() {
     >
       <AnimatePresence mode="popLayout">
         {selected === null && (
-          <div className="flex flex-row justify-center items-center w-full h-full px-4 md:px-28">
+          <motion.div className="flex flex-row justify-center items-center w-full h-full px-4 md:px-28">
             <Grid />
-          </div>
+          </motion.div>
         )}
         {selected !== null && (
-          <div className="flex flex-row justify-center items-center w-full h-full">
-            <div className="flex flex-row justify-end w-28">
+          <motion.div className="flex flex-row justify-center items-center w-full h-full">
+            <div className="flex flex-row justify-end w-4 md:w-28">
               <Button
                 variant={"ghost"}
                 className="w-fit h-fit p-0 left-0 hidden md:flex m-2"
@@ -68,7 +69,7 @@ export function ProjectGrid() {
 
             </div>
             <SelectedCard />
-            <div className="flex flex-row justify-start w-28">
+            <div className="flex flex-row justify-start w-4 md:w-28">
               <Button
                 variant={"ghost"}
                 className="w-fit h-fit p-0 right-0 hidden md:flex m-2"
@@ -83,7 +84,7 @@ export function ProjectGrid() {
                 <ChevronRight width={40} height={40} />
               </Button>
             </div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
@@ -121,9 +122,9 @@ export function ProjectGrid() {
           onMouseOver={() => setHovering(true)}
           onMouseOut={() => setHovering(false)}
           onClick={() => {
+            setCarouselAction("init");
             setSelected(index);
             scrollIntoView();
-            ScrollTrigger.refresh(true);
           }}
         >
           <motion.div
@@ -187,10 +188,19 @@ export function ProjectGrid() {
         left: {
           x: -256,
           opacity: 0,
+        },
+        top: {
+          y: -128,
+          opacity: 0,
         }
       }
+
+      function handleClose() {
+        setSelected(null);
+        setTimeout(ScrollTrigger.refresh, 100); // edge case: ScrollTrigger refreshes before SelectedCard/Grid is finished exiting/entering
+      }
       
-      function CarouselItem({action}: {action: "next" | "prev"}) {
+      function CarouselItem({action}: {action: typeof carouselAction}) {
         const [isHovering, setHovering] = useState(false);
 
         return (
@@ -288,10 +298,7 @@ export function ProjectGrid() {
                 fill={"light"}
                 stroke={"dark"}
                 className="w-fit h-fit p-0 "
-                onClick={() => {
-                  setSelected(null);
-                  ScrollTrigger.refresh(true);
-                }}
+                onClick={handleClose}
               >
                 <X width={32} height={32}/>
               </Button>
@@ -323,10 +330,7 @@ export function ProjectGrid() {
               <Button
                 variant={"ghost"}
                 className="p-0 w-fit h-fit"
-                onClick={() => {
-                  setSelected(null);
-                  ScrollTrigger.refresh(true);
-                }}
+                onClick={handleClose}
               >
                 <X width={32} height={32}/>
               </Button>

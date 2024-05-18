@@ -5,7 +5,7 @@ import { HeroButtonSet } from "./button-set";
 
 export function Content() {
   return (
-    <div className="z-10 flex flex-col items-center justify-center h-auto max-w-full max-h-full pt-16 space-y-8 transition-all w-full lg:pt-20 md:h-full">
+    <div className="z-10 flex flex-col items-center justify-center h-auto max-w-full max-h-full space-y-8 transition-all w-full pt-24 md:h-full">
       {/* Heading */}
       <div className={cn("max-w-[375px] w-full prose-display-lg font-bold itali px-4 md:px-0 md:max-w-[28rem] md:prose-display-2xl", zillaSlab.className)}>
         <div className="flex flex-row w-full">
