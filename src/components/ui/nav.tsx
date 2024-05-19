@@ -38,7 +38,7 @@ function useBoundedScroll(threshold: number) {
   return { scrollYBounded, scrollYBoundedProgress };
 }
 
-export function Navbar() {
+export function Navbar({ isLanding }: { isLanding: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -52,8 +52,8 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={isLanding && { opacity: 0 }}
+      animate={isLanding && { opacity: 1 }}
       transition={{ delay: 2, duration: 1 }}
       style={{
         height: useTransform(
@@ -81,7 +81,7 @@ export function Navbar() {
           className="flex origin-left items-center h-full"
         >
           <Link
-            href={""}
+            href={"/"}
             className={cn("w-full h-full flex flex-col justify-stretch items-stretch prose-text-lg font-bold", zillaSlab.className)}
           >
             <div className="flex flex-row w-full h-full pr-6">

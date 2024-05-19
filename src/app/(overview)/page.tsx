@@ -8,11 +8,11 @@ import { Projects } from "@/components/projects";
 
 export default function Page() {
   return (
-    <main className="flex flex-col overflow-x-clip items-center justify-between">
+    <section className="flex flex-col overflow-x-clip items-center justify-between">
       <Hero />
       <Projects />
       <AboutMe />
       <Cta />
-    </main>
+    </section>
   )
 }
