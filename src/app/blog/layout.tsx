@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className={cn()}>
+    <main className={cn("h-full")}>
       <Navbar isLanding={false} />
       <span className="h-16" />
       {children}

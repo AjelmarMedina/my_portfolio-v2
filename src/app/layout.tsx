@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 
 import { inter } from "@/components/ui/fonts";
+import { Footer } from "@/components/ui/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import "./globals.css";
@@ -45,8 +46,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className)}>
+      <body className={cn(inter.className, "min-h-screen")}>
         {children}
+        <Footer />
+        
         <Toaster />
         <Analytics />
       </body>
