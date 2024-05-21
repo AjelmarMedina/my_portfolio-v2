@@ -14,9 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className={cn("h-full")}>
+    <main className={cn("min-h-screen")}>
       <Navbar isLanding={false} />
-      <span className="h-16" />
       {children}
     </main>
   );

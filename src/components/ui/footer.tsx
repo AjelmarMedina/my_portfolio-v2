@@ -15,7 +15,7 @@ export function Footer() {
 
 function Content() {
   return (
-    <div className="container mx-auto flex items-center lg:flex-row md:flex-nowrap flex-wrap flex-col space-y-4 lg:space-y-0">
+    <div className="flex items-center lg:flex-row md:flex-nowrap flex-wrap flex-col space-y-4 lg:space-y-0">
       <Brand />
       <nav className="w-full md:w-fit flex-grow flex flex-col md:flex-row justify-end md:text-left text-center h-full md:space-y-0 space-y-2">
         <Projects />
@@ -67,7 +67,7 @@ function Content() {
     ]
 
     return (
-      <div className="h-full w-full md:w-fit px-4">
+      <div className="h-full w-full md:w-fit md:px-4">
         <h2 className="prose-display-xs mb-3 font-bold text-center lg:text-start">Projects</h2>
         <Nav links={links} />
       </div>
@@ -95,7 +95,7 @@ function Content() {
     ]
 
     return (
-      <div className="h-full w-full md:w-fit px-4">
+      <div className="h-full w-full md:w-fit md:px-4">
         <h2 className="prose-display-xs mb-3 font-bold text-center lg:text-start">About Me</h2>
         <Nav links={links} />
       </div>
@@ -123,7 +123,7 @@ function Content() {
     ]
 
     return (
-      <div className="h-full w-full md:w-fit px-4">
+      <div className="h-full w-full md:w-fit md:px-4">
         <h2 className="prose-display-xs font-bold mb-3 text-center lg:text-start">
           <Link href={"/blog"} target="_self">
             Blog
