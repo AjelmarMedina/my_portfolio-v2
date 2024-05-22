@@ -1,20 +1,60 @@
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 
 export default function Page() {
   return (
-    <section className="flex flex-col overflow-x-clip items-center justify-between h-full w-full pt-16">
-      <div
-        className="flex flex-row items-center justify-center min-w-full px-4 py-14 h-fit text-neutral-black md:px-28 md:py-12"
-      >
-        <div className="w-full space-y-8">
-          <h1 className="font-bold text-left prose-display-lg md:prose-display-xl">
-            Blog
-          </h1>
-          <p className="text-left prose-text-md md:prose-text-xl">
-            A collection of Ajelmar Medina&apos;s blogs.
-          </p>
-          <hr className="text-neutral-light" />
+    <section className="flex flex-col overflow-x-clip items-center justify-between w-full pt-16">
+      <article className="flex flex-col items-center justify-between h-full w-full space-y-14 px-4 py-14 md:px-28 md:py-12">
+        <div
+          className="flex flex-row items-center justify-center min-w-full h-fit text-neutral-black "
+        >
+          <div className="w-full space-y-8">
+            <h1 className="font-bold text-left prose-display-lg md:prose-display-xl">
+              Blog
+            </h1>
+            <p className="text-left prose-text-md md:prose-text-xl">
+              A collection of Ajelmar Medina&apos;s blogs.
+            </p>
+            <hr className="text-neutral-light" />
+          </div>
         </div>
-      </div>
+        <div className="w-full min-h-screen flex flex-col lg:grid grid-cols-2 gap-6">
+          <BlogItem />
+          <BlogItem />
+          <BlogItem />
+          <BlogItem />
+          <BlogItem />
+        </div>
+      </article>
     </section>
+  )
+}
+
+function BlogItem() {
+  return (
+    <Button variant={"ghost"} className="flex flex-col justify-between items-start font-normal text-left text-wrap w-full h-64 border-2 border-neutral-mid rounded-xl p-6">
+      <div className="space-y-4 w-full">
+        <h1 className="prose-display-sm">
+          Lorem, ipsum.
+        </h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore eligendi adipisci nihil sit, nemo aspernatur sapiente!
+        </p>
+      </div>
+      <div className="flex flex-row space-x-2 justify-start">
+        <Badge>
+          Lorem
+        </Badge>
+        <Badge>
+          Lorem
+        </Badge>
+        <Badge>
+          Lorem
+        </Badge>
+        <Badge>
+          Lorem
+        </Badge>
+      </div>
+    </Button>
   )
 }
