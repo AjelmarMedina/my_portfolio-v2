@@ -1,6 +1,10 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
+// TODO: Dynamic BlogItem content
+// TODO: DB project blog url
+// TODO BlogItem Button + Link as Child
+
 export default function Page() {
   return (
     <section className="flex flex-col overflow-x-clip items-center justify-between w-full pt-16">

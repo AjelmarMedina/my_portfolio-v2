@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./button";
 import { zillaSlab } from "./fonts";
 
-// TODO: Mobile fix
+// TODO: Blog Nav
 
 let clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);
