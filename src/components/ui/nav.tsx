@@ -11,8 +11,6 @@ import { useEffect, useState } from "react";
 import { Button } from "./button";
 import { zillaSlab } from "./fonts";
 
-// TODO: Blog Nav
-
 let clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);
 
@@ -70,6 +68,7 @@ export function Navbar({ isLanding }: { isLanding: boolean }) {
       className="fixed inset-x-0 flex h-16 shadow-2xl backdrop-blur-md z-50"
     >
       <div className="mx-auto flex w-full items-center justify-between px-4 md:px-20 z-10">
+        {/* Logo */}
         <motion.div
           style={{
             scale: useTransform(
@@ -96,6 +95,8 @@ export function Navbar({ isLanding }: { isLanding: boolean }) {
             </div>
           </Link>
         </motion.div>
+
+        {/* Nav */}
         <motion.nav
           style={{
             opacity: useTransform(
@@ -107,43 +108,23 @@ export function Navbar({ isLanding }: { isLanding: boolean }) {
           className="flex flex-row justify-end text-sm font-medium text-neutral-100"
         >
           <div className="w-full h-full sm:flex space-x-4 hidden">
-            <Button
-              variant={"ghost"}
-              onClick={contextSafe(() => {
-                gsap.to(window, {
-                  scrollTo: "#projects",
-                  duration: 1,
-                  onComplete: () => replace(`${pathname}#projects`),
-                })
-              })}
-            >
+            <NavBtn idSelector="projects">
               Projects
-            </Button>
-            <Button
-              variant={"ghost"}
-              onClick={contextSafe(() => {
-                gsap.to(window, {
-                  scrollTo: "#about-me",
-                  duration: 1,
-                  onComplete: () => replace(`${pathname}#about-me`),
-                })
-              })}
-            >
+            </NavBtn>
+            <NavBtn idSelector="about-me">
               About Me
-            </Button>
-            <Button
-              variant={"ghost"}
-              onClick={contextSafe(() => {
-                gsap.to(window, {
-                  scrollTo: "#cta",
-                  duration: 1,
-                  onComplete: () => replace(`${pathname}#cta`),
-                })
-              })}
-            >
+            </NavBtn>
+            <NavBtn idSelector="cta">
               Contact
-            </Button>
+            </NavBtn>
+            <NavBtn>
+              <Link href={"/blog"}>
+                Blog
+              </Link>
+            </NavBtn>
           </div>
+
+          {/* Mobile Nav Menu Button */}
           <motion.div
             className="w-fit h-fit"
             animate={{ rotate: menuOpen ? 90 : 0}}
@@ -161,6 +142,8 @@ export function Navbar({ isLanding }: { isLanding: boolean }) {
           </motion.div>
         </motion.nav>
       </div>
+
+      {/* Mobile Nav */}
       <motion.nav
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: menuOpen ? "100vh" : 0, opacity: menuOpen ? 1 : 0 }}
@@ -169,52 +152,72 @@ export function Navbar({ isLanding }: { isLanding: boolean }) {
           (menuOpen ? "flex opacity-100" : "hidden opacity-0")
         )}
       >
-        <Button
-          variant={"ghost"}
-          stroke={"light"}
-          className="p-0 h-fit w-full leading-[38px]"
-          onClick={contextSafe(() => {
-            setMenuOpen(false);
-            replace(`${pathname}#projects`);
-            gsap.to(window, {
-              scrollTo: "#projects",
-              duration: 1,
-            })
-          })}
-        >
+        <NavBtn fillWidth={true} idSelector="projects">
           Projects
-        </Button>
-        <Button
-          variant={"ghost"}
-          stroke={"light"}
-          className="p-0 h-fit w-full leading-[38px]"
-          onClick={contextSafe(() => {
-            setMenuOpen(false);
-            replace(`${pathname}#about-me`);
-            gsap.to(window, {
-              scrollTo: "#about-me",
-              duration: 1,
-            })
-          })}
-        >
+        </NavBtn>
+        <NavBtn fillWidth={true} idSelector="about-me">
           About Me
-        </Button>
-        <Button
-          variant={"ghost"}
-          stroke={"light"}
-          className="p-0 h-fit w-full leading-[38px]"
-          onClick={contextSafe(() => {
-            setMenuOpen(false);
-            replace(`${pathname}#cta`);
-            gsap.to(window, {
-              scrollTo: "#cta",
-              duration: 1,
-            })
-          })}
-        >
+        </NavBtn>
+        <NavBtn fillWidth={true} idSelector="cta">
           Contact
-        </Button>
+        </NavBtn>
+        <NavBtn fillWidth={true} asChild>
+          <Link href={"/blog"}>
+            Blog
+          </Link>
+        </NavBtn>
       </motion.nav>
     </motion.header>
   )
+
+  function NavBtn({ fillWidth = false, asChild = false, idSelector, children }:
+    {
+      fillWidth?: boolean;
+      asChild?: boolean
+      idSelector?: string;
+      children: React.ReactNode;
+    }
+  ) {
+    return (<>{fillWidth
+      ? (
+        <Button
+          variant={"ghost"}
+          stroke={"light"}
+          className="p-0 h-fit w-full leading-[38px]"
+          asChild = {asChild}
+          onClick={idSelector 
+            ? contextSafe(() => {
+              setMenuOpen(false);
+              replace(`${pathname}#${idSelector}`);
+              gsap.to(window, {
+                scrollTo: `#${idSelector}`,
+                duration: 1,
+              })
+            }) : () => {}
+          }
+        >
+          {children}
+        </Button>
+      ) : (
+        <Button
+          variant={"ghost"}
+          stroke={"light"}
+          asChild = {asChild}
+          onClick={idSelector 
+            ? contextSafe(() => {
+              gsap.to(window, {
+                scrollTo: `#${idSelector}`,
+                duration: 1,
+                onComplete: () => replace(`${pathname}#${idSelector}`),
+              })
+            }) : () => {}
+          }
+        >
+          {children}
+        </Button>
+      )
+    }</>)
+  }
+
 }
+
