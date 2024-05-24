@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { Button } from "./button";
 import { zillaSlab } from "./fonts";
 
+// TODO: Separate Landing Nav and default Nav
+
 let clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);
 

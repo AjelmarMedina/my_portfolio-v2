@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 // TODO: Dynamic BlogItem content
 // TODO: DB project blog url
@@ -24,7 +24,9 @@ export default function Page() {
         </div>
         <div className="w-full min-h-screen flex flex-col lg:grid grid-cols-2 gap-6">
           <BlogItem />
-          <BlogItem />
+          <BlogItem title={"Test Title"} tags={["Welcome", "to", "my", "Blog!"]}>
+            Elit amet adipisicing consectetur consequat tempor cupidatat et commodo.
+          </BlogItem>
           <BlogItem />
           <BlogItem />
           <BlogItem />
@@ -34,30 +36,29 @@ export default function Page() {
   )
 }
 
-function BlogItem() {
+function BlogItem({ title = "Lorem Ipsum", tags = ["Lorem", "ipsum", "dolor", "sit", "amet"], children }:
+  {
+    title?: string | null;
+    tags?: string[] | null;
+    children?: React.ReactNode;
+  }
+) {
   return (
     <Button variant={"ghost"} className="flex flex-col justify-between items-start font-normal text-left text-wrap w-full h-64 border-2 border-neutral-mid rounded-xl p-6">
       <div className="space-y-4 w-full">
         <h1 className="prose-display-sm">
-          Lorem, ipsum.
+          {title}
         </h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore eligendi adipisci nihil sit, nemo aspernatur sapiente!
+          {children ?? "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eos modi optio deserunt eius cumque eum id quis velit. Placeat numquam sit repellendus esse voluptate veniam culpa autem id incidunt."}
         </p>
       </div>
       <div className="flex flex-row space-x-2 justify-start">
-        <Badge>
-          Lorem
-        </Badge>
-        <Badge>
-          Lorem
-        </Badge>
-        <Badge>
-          Lorem
-        </Badge>
-        <Badge>
-          Lorem
-        </Badge>
+        {tags?.map((tag, index) => (
+          <Badge key={index}>
+            {tag}
+          </Badge>
+        ))}
       </div>
     </Button>
   )
