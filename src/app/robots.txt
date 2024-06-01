@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://ajelmarmedina.vercel.app/sitemap.xml
